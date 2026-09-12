@@ -10,7 +10,7 @@ readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "Stepan Sivitskii", email = "stepan.sivitsky@yandex.ru"}
 ]
 keywords = ["fraud-detection", "machine-learning", "scikit-learn", "fintech"]
 classifiers = [
@@ -59,10 +59,10 @@ fraudguard-train = "scripts.train:main"
 fraudguard-predict = "scripts.predict:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/fraudguard"
-Documentation = "https://github.com/yourusername/fraudguard#readme"
-Repository = "https://github.com/yourusername/fraudguard.git"
-Issues = "https://github.com/yourusername/fraudguard/issues"
+Homepage = "https://github.com/ssivitskii/FraudGuard"
+Documentation = "https://github.com/ssivitskii/FraudGuard#readme"
+Repository = "https://github.com/ssivitskii/FraudGuard.git"
+Issues = "https://github.com/ssivitskii/FraudGuard/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
