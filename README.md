@@ -1,188 +1,77 @@
-# 🛡️ FraudGuard
+# FraudGuard
 
-[![CI](https://github.com/ssivitskiy/fraudguard/actions/workflows/ci.yml/badge.svg)](https://github.com/ssivitskiy/fraudguard/actions/workflows/ci.yml)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+**Classical machine learning for imbalanced transaction classification.**
 
-**ML-модель для детектирования мошеннических транзакций**
+[Source](https://github.com/ssivitskii/FraudGuard) · [Issues](https://github.com/ssivitskii/FraudGuard/issues) · [Contributing](CONTRIBUTING.md)
 
-FraudGuard — проект на Python для выявления мошеннических операций по данным о платёжных транзакциях. Модель анализирует признаки транзакции (сумма, тип операции, устройство, время) и предсказывает вероятность мошенничества.
+## What is implemented
 
-## ✨ Возможности
+- Logistic Regression and Random Forest with class weighting.
+- A scikit-learn pipeline with scaling and one-hot encoding.
+- Hour and day-of-week features extracted from transaction timestamps.
+- Stratified train / validation / test splits, model selection by validation F1 and test-set evaluation.
+- Saved pipelines, command-line predictions and a Streamlit interface.
 
-- 🔍 Детектирование мошенничества с помощью ML-моделей
-- 📊 Работа с несбалансированными данными (`class_weight`)
-- 🌐 Веб-интерфейс на Streamlit
-- 🐳 Docker-контейнеризация
-- ✅ Полное покрытие тестами
+**Stack:** Python · pandas · scikit-learn · joblib · Streamlit
 
-## 🚀 Быстрый старт
+The implemented classifiers are in [`fraudguard/models.py`](fraudguard/models.py). XGBoost and a FastAPI service are not implemented.
 
-### Установка
+## Run locally
 
-```bash
-# Клонирование репозитория
-git clone https://github.com/yourusername/fraudguard.git
-cd fraudguard
-
-# Создание виртуального окружения
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Установка зависимостей
-pip install -e ".[all]"  # или: make install-dev
-```
-
-### Подготовка данных
+Use Python 3.11:
 
 ```bash
-mkdir -p data/raw
-# Скачайте датасет и сохраните как data/raw/transactions.csv
+git clone https://github.com/ssivitskii/FraudGuard.git
+cd FraudGuard
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev]"
 ```
 
-> **Примечание:** Датасет не включён в репозиторий из-за размера. Используйте публичный датасет транзакций онлайн-платежей (например, с Kaggle).
+### Prepare data
 
-### Обучение модели
+Provide your own `data/raw/transactions.csv`. For compatibility with the supplied CLI and Streamlit form, use this schema:
+
+| Column | Expected value |
+| --- | --- |
+| `amount` | Numeric transaction amount |
+| `transaction_type` | Transaction category |
+| `device_type` | Device category |
+| `transaction_time` | Valid timestamp |
+| `isFraud` | Binary target: `0` or `1` |
+
+Use complete records and enough examples of both classes for stratification. The pipeline does not impute missing values. Extra training columns become features and must also be supplied during inference; the existing form only supplies the four fields above.
+
+Data and trained models are not included. PaySim and other public transaction datasets need explicit schema adaptation; they are not drop-in inputs for this form.
+
+### Train and predict
 
 ```bash
-python -m scripts.train
-# или: make train
+python -m scripts.train --data transactions.csv --model both
+
+python -m scripts.predict --amount 1250 --transaction_type transfer --device_type mobile --transaction_time "2026-01-15 14:30:00" --threshold 0.5 --json
+
+python -m streamlit run app/app.py
 ```
 
-### Запуск веб-интерфейса
+Training selects between `logreg` and `forest` and writes `models/fraud_model.joblib` when a candidate improves the initial validation F1 of zero. Ensure the artifact exists before starting inference. The Streamlit form uses a fixed threshold of `0.5`; the prediction CLI exposes `--threshold`.
+
+## Evaluation
 
 ```bash
-streamlit run app/app.py
-# или: make app
+python -m pytest
 ```
 
-## 📁 Структура проекта
+Training prints precision, recall, F1, ROC-AUC and a confusion matrix. Report dataset provenance, split settings, class prevalence and threshold alongside results. This README does not claim benchmark scores: no versioned evaluation report is provided here.
 
-```
-FraudGuard/
-├── fraudguard/              # Основной пакет
-│   ├── __init__.py
-│   ├── data.py              # Загрузка и разбиение данных
-│   ├── features.py          # Инженерия признаков
-│   ├── models.py            # Определения моделей
-│   └── evaluate.py          # Метрики и оценка
-├── scripts/                 # CLI-скрипты
-│   ├── train.py             # Обучение модели
-│   └── predict.py           # Инференс
-├── app/                     # Streamlit приложение
-│   └── app.py
-├── tests/                   # Тесты
-├── notebooks/               # Jupyter ноутбуки для EDA
-├── data/                    # Данные (не в git)
-│   └── raw/
-├── models/                  # Сохранённые модели (не в git)
-├── pyproject.toml           # Конфигурация проекта
-├── Makefile                 # Удобные команды
-├── Dockerfile               # Контейнеризация
-└── README.md
-```
+The default split is approximately 55% training, 25% validation and 20% test, with seed 42. For time-dependent transaction data, also evaluate on a chronological holdout before interpreting random-split results as deployment performance.
 
-## 🛠️ Разработка
+## Repository map
 
-### Доступные команды (Makefile)
+`fraudguard/` contains data, features, models and evaluation; `scripts/` contains training and prediction entry points; `app/` contains the interface; `notebooks/` contains exploratory work; `tests/` contains automated tests.
 
-```bash
-make help          # Показать все команды
-make install-dev   # Установить зависимости для разработки
-make test          # Запустить тесты с coverage
-make lint          # Проверить код линтером
-make format        # Отформатировать код
-make check         # Запустить все проверки
-```
+A Dockerfile is included, but the local Python workflow above is the documented starting point; the container build has not been validated in this documentation update.
 
-### Запуск тестов
+## License
 
-```bash
-pytest                                    # Все тесты
-pytest --cov=fraudguard                   # С coverage
-pytest tests/test_features.py -v          # Конкретный файл
-```
-
-### Pre-commit хуки
-
-```bash
-pre-commit install      # Установить хуки
-pre-commit run --all    # Запустить на всех файлах
-```
-
-## 📈 Метрики модели
-
-Результаты на тестовой выборке (20% данных):
-
-| Модель | Precision | Recall | F1-Score | ROC-AUC | PR-AUC |
-|--------|-----------|--------|----------|---------|--------|
-| Logistic Regression | 0.92 | 0.78 | 0.84 | 0.94 | 0.82 |
-| **Random Forest** | **0.95** | **0.85** | **0.90** | **0.97** | **0.89** |
-
-### Confusion Matrix (Random Forest)
-
-```
-              Predicted
-              0       1
-Actual  0   [98.5%   1.5%]
-        1   [15.0%  85.0%]
-```
-
-### Интерпретация метрик
-
-- **Precision 95%** — из всех транзакций, помеченных как мошеннические, 95% действительно являются мошенничеством
-- **Recall 85%** — модель обнаруживает 85% всех мошеннических транзакций
-- **ROC-AUC 0.97** — отличная способность разделять классы
-- **PR-AUC 0.89** — высокое качество на несбалансированных данных
-
-> **Примечание:** Метрики получены на публичном датасете. На реальных данных результаты могут отличаться.
-
-## 📊 Датасет
-
-Используется публичный датасет транзакций онлайн-платежей. Ключевые поля:
-
-| Поле | Описание |
-|------|----------|
-| `step` | Временной шаг (часы) |
-| `type` | Тип транзакции (PAYMENT, CASH_OUT, TRANSFER и др.) |
-| `amount` | Сумма операции |
-| `nameOrig` / `nameDest` | ID отправителя / получателя |
-| `oldbalanceOrg` / `newbalanceOrg` | Баланс отправителя до/после |
-| `isFraud` | Целевая переменная (1 = мошенничество) |
-
-## 🐳 Docker
-
-```bash
-# Сборка образа
-docker build -t fraudguard:latest .
-# или: make docker-build
-
-# Запуск контейнера
-docker run -p 8501:8501 fraudguard:latest
-# или: make docker-run
-```
-
-Приложение будет доступно по адресу: http://localhost:8501
-
-## 🔮 Roadmap
-
-- [ ] Добавить XGBoost / LightGBM
-- [ ] Эксперименты с SMOTE и другими методами балансировки
-- [ ] SHAP-интерпретация моделей
-- [ ] REST API на FastAPI
-- [ ] MLflow для трекинга экспериментов
-
-## 🤝 Contributing
-
-Contributions приветствуются! См. [CONTRIBUTING.md](CONTRIBUTING.md) для деталей.
-
-## 📄 Лицензия
-
-MIT License — см. [LICENSE](LICENSE).
-
----
-
-<p align="center">
-  Made with ❤️ for fraud detection
-</p>
+[MIT](LICENSE)
