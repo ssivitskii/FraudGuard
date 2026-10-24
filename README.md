@@ -1,77 +1,110 @@
-# FraudGuard
+# FraudGuard — Temporal Fraud Detection
 
-**Classical machine learning for imbalanced transaction classification.**
+**Imbalanced classification with chronological validation and an explicit review budget.**
 
-[Source](https://github.com/ssivitskii/FraudGuard) · [Issues](https://github.com/ssivitskii/FraudGuard/issues) · [Contributing](CONTRIBUTING.md)
+FraudGuard compares Logistic Regression and Random Forest for transaction
+classification. The portfolio benchmark uses the ULB credit-card schema and
+separates model selection, threshold selection and final evaluation.
 
-## What is implemented
+## Benchmark protocol
 
-- Logistic Regression and Random Forest with class weighting.
-- A scikit-learn pipeline with scaling and one-hot encoding.
-- Hour and day-of-week features extracted from transaction timestamps.
-- Stratified train / validation / test splits, model selection by validation F1 and test-set evaluation.
-- Saved pipelines, command-line predictions and a Streamlit interface.
+- Split **distinct timestamps** into 60% training / 20% validation / 20% test.
+  Transactions with the same timestamp stay together; future rows never fit scaling.
+- Train on V1–V28 and Amount. Time is used only to define the split.
+- Choose the model by **validation average precision**; choose its threshold by
+  validation F1. Freeze both and evaluate the selected model once on test.
+- Report average precision (stepwise PR area), ROC-AUC, precision/recall at the
+  frozen threshold, actual threshold workload, and precision/recall among the
+  highest-scoring **1%** of a batch.
+- Preserve full class prevalence: no test downsampling, oversampling or SMOTE.
 
-**Stack:** Python · pandas · scikit-learn · joblib · Streamlit
+The top-1% metric uses an exact review capacity and stable label-independent tie
+breaking. A frozen threshold may produce a different workload as the distribution
+changes; the report shows both quantities.
 
-The implemented classifiers are in [`fraudguard/models.py`](fraudguard/models.py). XGBoost and a FastAPI service are not implemented.
+## Reproduce the ULB experiment
 
-## Run locally
-
-Use Python 3.11:
+The minimal benchmark environment is separate from the optional Streamlit app.
+Use Python 3.12 for the pinned numerical environment:
 
 ```bash
-git clone https://github.com/ssivitskii/FraudGuard.git
-cd FraudGuard
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -e ".[dev]"
+python3.12 -m venv .venv-benchmark
+source .venv-benchmark/bin/activate
+pip install -r requirements-benchmark.txt
+python -m scripts.download_creditcard
+python -m scripts.benchmark --data data/raw/creditcard.csv --output reports/creditcard.json
+python -m pytest -o addopts='' -q
 ```
 
-### Prepare data
+Data source: [official TensorFlow tutorial and mirror](https://www.tensorflow.org/tutorials/structured_data/imbalanced_data),
+with attribution to [Worldline / ULB](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud).
+Raw transactions are excluded from Git. The downloader records the source URL,
+file size and SHA-256; consult original data terms separately from the code license.
 
-Provide your own `data/raw/transactions.csv`. For compatibility with the supplied CLI and Streamlit form, use this schema:
+The benchmark expects the original `Time,V1..V28,Amount,Class` schema and rejects
+missing, infinite or nonbinary inputs. It does not write a model over the app's
+artifact: its numerical features differ from the interactive form.
 
-| Column | Expected value |
-| --- | --- |
-| `amount` | Numeric transaction amount |
-| `transaction_type` | Transaction category |
-| `device_type` | Device category |
-| `transaction_time` | Valid timestamp |
-| `isFraud` | Binary target: `0` or `1` |
+## Measured result
 
-Use complete records and enough examples of both classes for stratification. The pipeline does not impute missing values. Extra training columns become features and must also be supplied during inference; the existing form only supplies the four fields above.
+Completed on the original **284,807 transactions / 492 fraud cases**. Logistic
+Regression was selected by validation average precision. On the chronological
+held-out test (60,140 transactions / 77 frauds):
 
-Data and trained models are not included. PaySim and other public transaction datasets need explicit schema adaptation; they are not drop-in inputs for this form.
+| Metric | Selected Logistic Regression |
+| --- | ---: |
+| Average precision | 0.7510 |
+| ROC-AUC | 0.9825 |
+| Precision at validation-selected threshold | 0.9455 |
+| Recall at validation-selected threshold | 0.6753 |
+| Recall within a top-1% review budget | 0.8701 |
+| Precision within that review budget | 0.1113 |
 
-### Train and predict
+The top-1% rule reviewed 602 transactions and found 67 fraud cases. The frozen
+validation threshold reviewed approximately 0.0915% of test transactions. These
+are different workloads. The class-weighted model's scores are not calibrated
+fraud probabilities.
+
+[Full measured report, split ranges and provenance](reports/creditcard.json) ·
+[Source manifest](data/creditcard_source.json). Values are rounded only here;
+the JSON retains full precision. No confidence interval or superiority claim is
+made from this single historical split.
+
+## Evidence and limits
+
+The benchmark emits a versioned JSON report with split times, class counts,
+validation comparisons, final metrics, EDA summary, data/source hashes and library
+versions. Reported results belong only to the exact file and protocol recorded
+there. Dataset-specific results are linked below when a complete run is available.
+
+Two days of historical transactions are a small time window. Card/entity IDs are
+unavailable for group holdout. The anonymous PCA features were created upstream;
+their fitting provenance cannot be audited here. Neither AP nor a review-budget
+metric is a deployment or financial impact estimate. Rank-based cohort scoring
+and calibrated fraud probabilities are different concepts.
+
+## Existing application
+
+A separate generic-transaction workflow remains available:
 
 ```bash
+python -m pip install -e '.[dev]'
 python -m scripts.train --data transactions.csv --model both
-
-python -m scripts.predict --amount 1250 --transaction_type transfer --device_type mobile --transaction_time "2026-01-15 14:30:00" --threshold 0.5 --json
-
 python -m streamlit run app/app.py
 ```
 
-Training selects between `logreg` and `forest` and writes `models/fraud_model.joblib` when a candidate improves the initial validation F1 of zero. Ensure the artifact exists before starting inference. The Streamlit form uses a fixed threshold of `0.5`; the prediction CLI exposes `--threshold`.
+Its CSV contains `amount`, `transaction_type`, `device_type`, `transaction_time`
+and binary `isFraud`. It uses the original stratified split and fixed app threshold
+of 0.5. Its numbers should not be confused with the chronological ULB benchmark.
+Additional training features must also be supplied at inference. Missing-value
+imputation is not implemented for that application.
 
-## Evaluation
+## Repository
 
-```bash
-python -m pytest
-```
+- `scripts/benchmark.py`: chronological experiment and review-budget metrics.
+- `fraudguard/`: preprocessing, models, scoring and data-split helpers.
+- `notebooks/`: executable EDA and benchmark walkthroughs, without embedded data.
+- `app/`: optional Streamlit demo.
+- `tests/`: threshold, schema, split and model regression checks.
 
-Training prints precision, recall, F1, ROC-AUC and a confusion matrix. Report dataset provenance, split settings, class prevalence and threshold alongside results. This README does not claim benchmark scores: no versioned evaluation report is provided here.
-
-The default split is approximately 55% training, 25% validation and 20% test, with seed 42. For time-dependent transaction data, also evaluate on a chronological holdout before interpreting random-split results as deployment performance.
-
-## Repository map
-
-`fraudguard/` contains data, features, models and evaluation; `scripts/` contains training and prediction entry points; `app/` contains the interface; `notebooks/` contains exploratory work; `tests/` contains automated tests.
-
-A Dockerfile is included, but the local Python workflow above is the documented starting point; the container build has not been validated in this documentation update.
-
-## License
-
-[MIT](LICENSE)
+[MIT code license](LICENSE). Dataset rights remain with their respective publishers.

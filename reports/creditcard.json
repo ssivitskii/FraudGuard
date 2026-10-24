@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "dataset": "ULB creditcard",
+  "seed": 42,
+  "dataset_sha256": "76274b691b16a6c49d3f159c883398e03ccd6d1ee12d9d8ee38f4b4b98551a89",
+  "benchmark_source_sha256": "6b4f174ef0e7246b503307efc457665d85c56abbad56dbd4ac021cd98bb57922",
+  "protocol": "60/20/20 distinct timestamp groups; model by validation AP; threshold by validation F1; selected model tested once; no refit",
+  "features": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "Amount"
+  ],
+  "time_excluded_from_features": true,
+  "splits": {
+    "train": {
+      "rows": 162992,
+      "frauds": 356,
+      "prevalence": 0.002184156277608717,
+      "time_min": 0.0,
+      "time_max": 115551.0
+    },
+    "validation": {
+      "rows": 61675,
+      "frauds": 59,
+      "prevalence": 0.0009566274827725983,
+      "time_min": 115553.0,
+      "time_max": 143907.0
+    },
+    "test": {
+      "rows": 60140,
+      "frauds": 77,
+      "prevalence": 0.0012803458596607916,
+      "time_min": 143908.0,
+      "time_max": 172792.0
+    }
+  },
+  "validation": {
+    "logistic": {
+      "average_precision": 0.7601443295562673,
+      "roc_auc": 0.9732044615310133,
+      "threshold": 0.9999897459747431,
+      "precision_at_frozen_threshold": 0.8936170212765957,
+      "recall_at_frozen_threshold": 0.711864406779661,
+      "review_fraction_at_frozen_threshold": 0.0007620591811917308,
+      "top_1_percent": {
+        "reviewed": 617,
+        "frauds_found": 51,
+        "precision": 0.08265802269043761,
+        "recall": 0.864406779661017
+      }
+    },
+    "random_forest": {
+      "average_precision": 0.7313152191192459,
+      "roc_auc": 0.9622999914175934,
+      "threshold": 0.5182900681459126,
+      "precision_at_frozen_threshold": 0.8979591836734694,
+      "recall_at_frozen_threshold": 0.7457627118644068,
+      "review_fraction_at_frozen_threshold": 0.0007944872314552087,
+      "top_1_percent": {
+        "reviewed": 617,
+        "frauds_found": 50,
+        "precision": 0.08103727714748785,
+        "recall": 0.847457627118644
+      }
+    }
+  },
+  "selected_model": "logistic",
+  "test": {
+    "average_precision": 0.7510085285381434,
+    "roc_auc": 0.9824562996732219,
+    "threshold": 0.9999897459747431,
+    "precision_at_frozen_threshold": 0.9454545454545454,
+    "recall_at_frozen_threshold": 0.6753246753246753,
+    "review_fraction_at_frozen_threshold": 0.0009145327569005654,
+    "top_1_percent": {
+      "reviewed": 602,
+      "frauds_found": 67,
+      "precision": 0.11129568106312292,
+      "recall": 0.8701298701298701
+    }
+  },
+  "eda": {
+    "rows": 284807,
+    "missing_values": 0,
+    "frauds": 492,
+    "amount_median": 22.0,
+    "amount_p99": 1017.9700000000012
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "sklearn": "1.7.2"
+  },
+  "limitations": [
+    "Only two days of transactions; no card/entity IDs for group holdout.",
+    "Original PCA features were produced upstream; their fitting provenance is outside this benchmark.",
+    "Historical selected data, not a deployment or financial impact estimate.",
+    "Top-1% is a batch capacity ranking metric; a frozen threshold has a variable workload."
+  ]
+}

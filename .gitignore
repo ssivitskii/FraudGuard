@@ -122,3 +122,4 @@ site/
 *.pem
 secrets.yaml
 secrets.json
+.venv-benchmark/
