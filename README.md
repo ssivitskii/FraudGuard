@@ -9,7 +9,7 @@
   <a href="#measured-result">Results</a> &nbsp;·&nbsp;
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
   <a href="#reproduce-the-ulb-experiment">Reproduce</a> &nbsp;·&nbsp;
-  <a href="#ieee-cis-history-and-graph-experiment">IEEE-CIS</a> &nbsp;·&nbsp;
+  <a href="#elliptic-graph-experiment">Elliptic</a> &nbsp;·&nbsp;
   <a href="#existing-application">Local app</a> &nbsp;·&nbsp;
   <a href="#evidence-and-limits">Limits</a>
 </p>
@@ -22,8 +22,8 @@ FraudGuard compares Logistic Regression and Random Forest for transaction
 classification. The portfolio benchmark uses the ULB credit-card schema and
 separates model selection, threshold selection and final evaluation.
 
-An additional IEEE-CIS experiment compares transaction attributes, prior event
-history and graph features under the same chronological split and review budget.
+An additional Elliptic AML experiment compares local transaction attributes,
+graph structure and neighbouring features on future completed graph snapshots.
 
 ## Measured result
 
@@ -66,7 +66,7 @@ only evaluates that frozen choice.
 | Workflow | Entry point | Output |
 | --- | --- | --- |
 | Chronological ULB experiment | [`scripts/benchmark.py`](scripts/benchmark.py) | Versioned JSON report with provenance and review-budget metrics |
-| IEEE-CIS feature comparison | [`scripts/benchmark_ieee.py`](scripts/benchmark_ieee.py) | Three fixed feature variants, simulated label delay and a shared review budget |
+| Elliptic graph comparison | [`scripts/benchmark_elliptic.py`](scripts/benchmark_elliptic.py) | Three fixed feature variants on future snapshots, with a shared review budget |
 | Generic transaction application | [`scripts/train.py`](scripts/train.py) → [`app/app.py`](app/app.py) | App-compatible model and interactive predictions |
 
 ## Benchmark protocol
@@ -110,63 +110,88 @@ The benchmark expects the original `Time,V1..V28,Amount,Class` schema and reject
 missing, infinite or nonbinary inputs. It does not write a model over the app's
 artifact: its numerical features differ from the interactive form.
 
-## IEEE-CIS history and graph experiment
+## Elliptic graph experiment
 
-**Question:** do event history and connections between coarse card/device
-signatures improve future fraud detection at the same review capacity?
+**Question:** do graph structure and neighbouring transaction attributes improve
+illicit-transaction classification on future completed Bitcoin graph snapshots?
 
-| Variant | Inputs |
-| --- | --- |
-| `tabular` | Transaction amount, product, card/address categories, email domains and device descriptors |
-| `history` | Tabular inputs + prior event count, mean amount and time since the last event for each signature |
-| `graph` | History inputs + number of distinct prior neighbours on each side of the card–device graph and prior pair count |
+| Variant | Inputs | Features |
+| --- | --- | ---: |
+| `local` | Supplied local transaction attributes, excluding time | 93 |
+| `structure` | Local attributes + directed in-degree and out-degree | 95 |
+| `neighborhood` | Structure inputs + incoming/outgoing neighbours' mean local attributes | 281 |
 
-All three use the same `HistGradientBoostingClassifier` parameters. Categories
-are encoded using training data only; unseen values become missing and frequent
-categories are retained up to 255 bins. The restricted baseline excludes the
-dataset's precomputed V/C/D features, whose derivation is outside this experiment.
-This is a controlled feature comparison, not a competition leaderboard baseline.
+All three use the same `HistGradientBoostingClassifier` parameters. Neighbour
+means are rebuilt from the edge list without labels; a missing neighbourhood has
+zero means and zero degree. The 72 supplied aggregate features are excluded.
 
-The card signature is the complete tuple `card1`–`card6`; the device signature is
-the complete tuple `DeviceType, DeviceInfo`. These describe broad attributes,
-**not verified cardholders or physical devices**. Shared descriptors can connect
-unrelated events. Incomplete signatures create no node or edge.
+### Evaluation protocol
 
-- Sort by `TransactionDT, TransactionID`; split distinct times 60/20/20 using the
-  existing chronological splitter. `TransactionDT` is relative time in seconds.
-- Compute each history/graph feature from events with **strictly earlier** time.
-  Events with equal timestamps cannot see each other. Labels never enter features.
-- Assume a fixed **7-day label delay**: only training labels available at validation
-  start and validation labels available at test start are eligible. This is a
-  simulation; actual label-confirmation timestamps are not supplied.
-- Unlabelled event history continues through the excluded intervals and through
-  validation/test. Models and category encoders stay frozen after training.
-- Select a variant by validation average precision and each variant's threshold
-  by validation F1. Report all three predeclared ablations on the same final test.
-- Use an exact top-1% batch capacity for every variant. This retrospective ranking
-  metric is distinct from an online decision policy or a calibrated risk estimate.
+- Join labels by transaction ID. `1` means illicit, `2` licit, and `unknown` is
+  unlabelled. Unknown nodes contribute only unlabelled graph context and never
+  enter model fitting or quality metrics.
+- Split all 49 distinct time steps before filtering unknown labels: **1–29
+  training / 30–39 validation / 40–49 test**. Models never fit future snapshots.
+- Each graph is a **completed snapshot**, including its unlabelled nodes. There
+  are no edges between time steps. Adding future snapshots cannot change earlier
+  graph features; this does not establish transaction-arrival-time availability.
+- Select the variant by validation average precision and each threshold by
+  validation F1. Freeze all models and thresholds; evaluate the three predeclared
+  variants on the same held-out transactions. No refit or test-driven selection.
+- Apply an exact top-1% review budget to the **labelled test cohort**. Report both
+  pooled metrics and separate time-step results. Per-step capacities are separate
+  queues and need not sum to the pooled capacity.
 
-Download `train_transaction.csv` and `train_identity.csv` from the
-[IEEE-CIS competition](https://www.kaggle.com/competitions/ieee-fraud-detection/data)
-after accepting its data rules, and put both in `data/raw/ieee-cis/`. All labelled
-transactions are retained by a left join; identity attributes are missing for
-transactions with no matching identity row. Raw data stays outside Git.
+### Reproduce
+
+The dataset was published by Elliptic and the MIT–IBM Watson AI Lab for research:
+[paper](https://arxiv.org/abs/1908.02591). The downloader uses the author's [public dataset export](https://www.kaggle.com/datasets/ellipticco/elliptic-data-set),
+which requires no account credentials or phone/identity verification. It verifies the
+three CSV hashes; raw data is excluded from Git.
 
 With the benchmark environment above activated:
 
 ```bash
-python -m scripts.benchmark_ieee \
-  --data-dir data/raw/ieee-cis \
-  --label-delay-days 7 \
+python -m scripts.download_elliptic
+OMP_NUM_THREADS=4 python -m scripts.benchmark_elliptic \
+  --data-dir data/raw/elliptic \
   --review-budget 0.01 \
-  --output reports/ieee.json
+  --output reports/elliptic.json
 ```
 
-The report records input/source hashes, feature lists, model parameters, split
-sizes, label eligibility and validation/test metrics. `--label-delay-days 0`
-removes the simulated delay. No measured IEEE-CIS result is claimed until the
-complete dataset has been run. The local Streamlit form uses its separate generic
-transaction schema and does not serve this experiment's models.
+The report records input/source hashes, feature lists, model parameters, class
+counts, time boundaries, validation scores and test results by time step.
+
+### Measured comparison
+
+Completed on **203,769 nodes / 234,355 edges / 49 snapshots**. Of the nodes,
+157,205 have unknown labels. The final test has **11,184 labelled transactions,
+including 636 illicit**, plus 35,463 unknown nodes used only as graph context.
+
+| Variant | Validation AP | Test AP | Test precision @ 1% | Test recall @ 1% |
+| --- | ---: | ---: | ---: | ---: |
+| Local | 0.9652 | 0.6337 | 1.0000 | 0.1761 |
+| + Structure | 0.9657 | 0.6362 | 1.0000 | 0.1761 |
+| + Neighbour means | **0.9747** | **0.6634** | 1.0000 | 0.1761 |
+
+Validation selected `neighborhood` before test comparison. Its pooled test AP is
+0.0297 above `local` on this split, but **all three find 112 illicit transactions
+in 112 reviews**: there is no gain at the chosen 1% budget. The much lower test AP
+than validation AP also limits claims about performance on later snapshots.
+These results do not establish statistical superiority or operational precision.
+
+[Full measured report, time-step results and provenance](reports/elliptic.json).
+Only display values are rounded here; the report preserves full precision.
+
+### Interpretation limits
+
+This is an offline AML experiment on completed snapshots. The data has no exact
+within-snapshot ordering or label-confirmation timestamps; the supplied local
+features are anonymous and their real-time availability cannot be audited.
+Because unknown labels are excluded, review metrics do not estimate performance
+on the entire operational transaction stream. One historical split does not
+establish general superiority, calibrated probabilities or financial impact.
+The existing Streamlit form uses its separate generic-transaction schema.
 
 ## Existing application
 
