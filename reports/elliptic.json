@@ -1098,7 +1098,7 @@
     "scripts/benchmark.py": "6b4f174ef0e7246b503307efc457665d85c56abbad56dbd4ac021cd98bb57922",
     "scripts/download_elliptic.py": "d6fcfb10ed03793739427b3560e1bdff95f2269f12def0ae584a844bf858c17c",
     "scripts/download_creditcard.py": "2887b0b7c0b91ad9715caabf33ec484391451ba9eae06466647cf8968a354af0",
-    "fraudguard/elliptic.py": "bc19f17c83731e3e728e13715549d4732c8d3679c36c069ee9b5820395766b6e",
+    "fraudguard/elliptic.py": "ae8b397cdf22994ff52a05cf0340fd6f899bcd5b19bf2ce7b6bdef8b8340f802",
     "fraudguard/data.py": "74ea67e2c46c4140ebc9d51238376adfbfebf80c309f0ebb3a771d4b034a51d3"
   }
 }

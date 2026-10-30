@@ -103,4 +103,7 @@ def build_graph_features(frame: pd.DataFrame, edges: pd.DataFrame) -> pd.DataFra
         where=outgoing_degree[:, None] != 0,
     )
     values = np.column_stack([incoming_degree, outgoing_degree, incoming_mean, outgoing_mean])
-    return pd.DataFrame(values, index=frame.index, columns=STRUCTURE_COLUMNS + NEIGHBOR_COLUMNS)
+    result: pd.DataFrame = pd.DataFrame(
+        values, index=frame.index, columns=STRUCTURE_COLUMNS + NEIGHBOR_COLUMNS
+    )
+    return result
