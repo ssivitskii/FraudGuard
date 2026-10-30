@@ -9,6 +9,7 @@
   <a href="#measured-result">Results</a> &nbsp;·&nbsp;
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
   <a href="#reproduce-the-ulb-experiment">Reproduce</a> &nbsp;·&nbsp;
+  <a href="#ieee-cis-history-and-graph-experiment">IEEE-CIS</a> &nbsp;·&nbsp;
   <a href="#existing-application">Local app</a> &nbsp;·&nbsp;
   <a href="#evidence-and-limits">Limits</a>
 </p>
@@ -20,6 +21,9 @@
 FraudGuard compares Logistic Regression and Random Forest for transaction
 classification. The portfolio benchmark uses the ULB credit-card schema and
 separates model selection, threshold selection and final evaluation.
+
+An additional IEEE-CIS experiment compares transaction attributes, prior event
+history and graph features under the same chronological split and review budget.
 
 ## Measured result
 
@@ -62,6 +66,7 @@ only evaluates that frozen choice.
 | Workflow | Entry point | Output |
 | --- | --- | --- |
 | Chronological ULB experiment | [`scripts/benchmark.py`](scripts/benchmark.py) | Versioned JSON report with provenance and review-budget metrics |
+| IEEE-CIS feature comparison | [`scripts/benchmark_ieee.py`](scripts/benchmark_ieee.py) | Three fixed feature variants, simulated label delay and a shared review budget |
 | Generic transaction application | [`scripts/train.py`](scripts/train.py) → [`app/app.py`](app/app.py) | App-compatible model and interactive predictions |
 
 ## Benchmark protocol
@@ -104,6 +109,64 @@ file size and SHA-256; consult original data terms separately from the code lice
 The benchmark expects the original `Time,V1..V28,Amount,Class` schema and rejects
 missing, infinite or nonbinary inputs. It does not write a model over the app's
 artifact: its numerical features differ from the interactive form.
+
+## IEEE-CIS history and graph experiment
+
+**Question:** do event history and connections between coarse card/device
+signatures improve future fraud detection at the same review capacity?
+
+| Variant | Inputs |
+| --- | --- |
+| `tabular` | Transaction amount, product, card/address categories, email domains and device descriptors |
+| `history` | Tabular inputs + prior event count, mean amount and time since the last event for each signature |
+| `graph` | History inputs + number of distinct prior neighbours on each side of the card–device graph and prior pair count |
+
+All three use the same `HistGradientBoostingClassifier` parameters. Categories
+are encoded using training data only; unseen values become missing and frequent
+categories are retained up to 255 bins. The restricted baseline excludes the
+dataset's precomputed V/C/D features, whose derivation is outside this experiment.
+This is a controlled feature comparison, not a competition leaderboard baseline.
+
+The card signature is the complete tuple `card1`–`card6`; the device signature is
+the complete tuple `DeviceType, DeviceInfo`. These describe broad attributes,
+**not verified cardholders or physical devices**. Shared descriptors can connect
+unrelated events. Incomplete signatures create no node or edge.
+
+- Sort by `TransactionDT, TransactionID`; split distinct times 60/20/20 using the
+  existing chronological splitter. `TransactionDT` is relative time in seconds.
+- Compute each history/graph feature from events with **strictly earlier** time.
+  Events with equal timestamps cannot see each other. Labels never enter features.
+- Assume a fixed **7-day label delay**: only training labels available at validation
+  start and validation labels available at test start are eligible. This is a
+  simulation; actual label-confirmation timestamps are not supplied.
+- Unlabelled event history continues through the excluded intervals and through
+  validation/test. Models and category encoders stay frozen after training.
+- Select a variant by validation average precision and each variant's threshold
+  by validation F1. Report all three predeclared ablations on the same final test.
+- Use an exact top-1% batch capacity for every variant. This retrospective ranking
+  metric is distinct from an online decision policy or a calibrated risk estimate.
+
+Download `train_transaction.csv` and `train_identity.csv` from the
+[IEEE-CIS competition](https://www.kaggle.com/competitions/ieee-fraud-detection/data)
+after accepting its data rules, and put both in `data/raw/ieee-cis/`. All labelled
+transactions are retained by a left join; identity attributes are missing for
+transactions with no matching identity row. Raw data stays outside Git.
+
+With the benchmark environment above activated:
+
+```bash
+python -m scripts.benchmark_ieee \
+  --data-dir data/raw/ieee-cis \
+  --label-delay-days 7 \
+  --review-budget 0.01 \
+  --output reports/ieee.json
+```
+
+The report records input/source hashes, feature lists, model parameters, split
+sizes, label eligibility and validation/test metrics. `--label-delay-days 0`
+removes the simulated delay. No measured IEEE-CIS result is claimed until the
+complete dataset has been run. The local Streamlit form uses its separate generic
+transaction schema and does not serve this experiment's models.
 
 ## Existing application
 
