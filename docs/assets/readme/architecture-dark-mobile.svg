@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1290" viewBox="0 0 600 1290" role="img" aria-labelledby="title desc">
+<title id="title">FraudGuard architecture</title>
+<desc id="desc">CHRONOLOGICAL BENCHMARK: Validate &amp; split → Fit on train → Select on valid → Freeze &amp; test. SEPARATE GENERIC-TRANSACTION APPLICATION: Generic CSV → Train pipeline → Saved artifact → Streamlit. The ULB benchmark does not overwrite the app model. Its scores are not calibrated probabilities.</desc>
+<rect x="1" y="1" width="598" height="1288" rx="22" fill="#241A12" stroke="#58412B"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1L6 4L0 7" fill="none" stroke="#FFAF6A" stroke-width="1.4"/></marker></defs>
+<text x="30" y="52" font-size="16" fill="#FFAF6A" font-weight="700" letter-spacing="1">CHRONOLOGICAL BENCHMARK</text>
+<rect x="30" y="98" width="540" height="100" rx="12" fill="#39291A" stroke="#58412B"/>
+<text x="51" y="129" font-size="16" fill="#FFAF6A" font-weight="700" >01</text>
+<text x="96" y="130" font-size="25" fill="#FFF1E1" font-weight="650" >Validate &amp; split</text>
+<text x="96" y="158" font-size="20" fill="#D1B699" font-weight="400" >ULB transaction CSV</text>
+<text x="96" y="182" font-size="20" fill="#D1B699" font-weight="400" >60 / 20 / 20 time groups</text>
+<path d="M300 201V215" fill="none" stroke="#FFAF6A" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="220" width="540" height="100" rx="12" fill="#39291A" stroke="#58412B"/>
+<text x="51" y="251" font-size="16" fill="#FFAF6A" font-weight="700" >02</text>
+<text x="96" y="252" font-size="25" fill="#FFF1E1" font-weight="650" >Fit on train</text>
+<text x="96" y="280" font-size="20" fill="#D1B699" font-weight="400" >Scaling + classifiers</text>
+<text x="96" y="304" font-size="20" fill="#D1B699" font-weight="400" >Logistic / Random Forest</text>
+<path d="M300 323V337" fill="none" stroke="#FFAF6A" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="342" width="540" height="100" rx="12" fill="#39291A" stroke="#58412B"/>
+<text x="51" y="373" font-size="16" fill="#FFAF6A" font-weight="700" >03</text>
+<text x="96" y="374" font-size="25" fill="#FFF1E1" font-weight="650" >Select on valid</text>
+<text x="96" y="402" font-size="20" fill="#D1B699" font-weight="400" >Model: average precision</text>
+<text x="96" y="426" font-size="20" fill="#D1B699" font-weight="400" >Threshold: F1</text>
+<path d="M300 445V459" fill="none" stroke="#FFAF6A" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="464" width="540" height="100" rx="12" fill="#39291A" stroke="#58412B"/>
+<text x="51" y="495" font-size="16" fill="#FFAF6A" font-weight="700" >04</text>
+<text x="96" y="496" font-size="25" fill="#FFF1E1" font-weight="650" >Freeze &amp; test</text>
+<text x="96" y="524" font-size="20" fill="#D1B699" font-weight="400" >No model refit</text>
+<text x="96" y="548" font-size="20" fill="#D1B699" font-weight="400" >AP + budget metrics</text>
+<text x="30" y="647" font-size="16" fill="#FFAF6A" font-weight="700" letter-spacing="1">SEPARATE GENERIC-TRANSACTION APPLICATION</text>
+<rect x="30" y="693" width="540" height="100" rx="12" fill="#39291A" stroke="#58412B"/>
+<text x="51" y="724" font-size="16" fill="#FFAF6A" font-weight="700" >01</text>
+<text x="96" y="725" font-size="25" fill="#FFF1E1" font-weight="650" >Generic CSV</text>
+<text x="96" y="753" font-size="20" fill="#D1B699" font-weight="400" >Amount, type, device</text>
+<text x="96" y="777" font-size="20" fill="#D1B699" font-weight="400" >Time + isFraud</text>
+<path d="M300 796V810" fill="none" stroke="#FFAF6A" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="815" width="540" height="100" rx="12" fill="#39291A" stroke="#58412B"/>
+<text x="51" y="846" font-size="16" fill="#FFAF6A" font-weight="700" >02</text>
+<text x="96" y="847" font-size="25" fill="#FFF1E1" font-weight="650" >Train pipeline</text>
+<text x="96" y="875" font-size="20" fill="#D1B699" font-weight="400" >Original stratified split</text>
+<text x="96" y="899" font-size="20" fill="#D1B699" font-weight="400" >scripts/train.py</text>
+<path d="M300 918V932" fill="none" stroke="#FFAF6A" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="937" width="540" height="100" rx="12" fill="#39291A" stroke="#58412B"/>
+<text x="51" y="968" font-size="16" fill="#FFAF6A" font-weight="700" >03</text>
+<text x="96" y="969" font-size="25" fill="#FFF1E1" font-weight="650" >Saved artifact</text>
+<text x="96" y="997" font-size="20" fill="#D1B699" font-weight="400" >App-compatible features</text>
+<text x="96" y="1021" font-size="20" fill="#D1B699" font-weight="400" >Trained preprocessing</text>
+<path d="M300 1040V1054" fill="none" stroke="#FFAF6A" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="1059" width="540" height="100" rx="12" fill="#39291A" stroke="#58412B"/>
+<text x="51" y="1090" font-size="16" fill="#FFAF6A" font-weight="700" >04</text>
+<text x="96" y="1091" font-size="25" fill="#FFF1E1" font-weight="650" >Streamlit</text>
+<text x="96" y="1119" font-size="20" fill="#D1B699" font-weight="400" >Transaction form</text>
+<text x="96" y="1143" font-size="20" fill="#D1B699" font-weight="400" >Fixed threshold: 0.5</text>
+<text x="30" y="1228" font-size="18" fill="#D1B699" font-weight="400" >The ULB benchmark does not overwrite the app model. Its</text>
+<text x="30" y="1252" font-size="18" fill="#D1B699" font-weight="400" >scores are not calibrated probabilities.</text>
+</g></svg>

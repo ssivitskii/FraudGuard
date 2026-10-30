@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="382" viewBox="0 0 600 382" role="img" aria-labelledby="title desc">
+<title id="title">FraudGuard</title>
+<desc id="desc">Detect rare events. Make the review budget explicit.</desc>
+<rect x="1" y="1" width="598" height="380" rx="22" fill="#241A12" stroke="#58412B"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+<text x="32" y="43" font-size="17" fill="#FFAF6A" font-weight="700" letter-spacing="1.6">FRAUD DETECTION</text>
+<text x="30" y="115" font-size="49" fill="#FFF1E1" font-weight="750" letter-spacing="-2">FraudGuard</text>
+<text x="32" y="165" font-size="25" fill="#D1B699" font-weight="400" >Detect rare events.</text>
+<text x="32" y="199" font-size="25" fill="#D1B699" font-weight="400" >Make the review budget explicit.</text>
+<path d="M32 245H568" stroke="#58412B"/>
+<text x="32" y="281" font-size="14" fill="#FFAF6A" font-weight="700" letter-spacing="1">DATA</text>
+<text x="200" y="281" font-size="21" fill="#FFF1E1" font-weight="550" >ULB credit cards</text>
+<text x="32" y="315" font-size="14" fill="#FFAF6A" font-weight="700" letter-spacing="1">VALIDATION</text>
+<text x="200" y="315" font-size="21" fill="#FFF1E1" font-weight="550" >Chronological split</text>
+<text x="32" y="349" font-size="14" fill="#FFAF6A" font-weight="700" letter-spacing="1">DECISION</text>
+<text x="200" y="349" font-size="21" fill="#FFF1E1" font-weight="550" >Review capacity</text>
+</g></svg>
