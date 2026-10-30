@@ -1,0 +1,189 @@
+"""Compare local and graph features on completed Elliptic snapshots."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import platform
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import sklearn
+from sklearn.ensemble import HistGradientBoostingClassifier
+
+from fraudguard.data import chronological_split
+from fraudguard.elliptic import (
+    LOCAL_COLUMNS,
+    NEIGHBOR_COLUMNS,
+    STRUCTURE_COLUMNS,
+    build_graph_features,
+    load_elliptic,
+)
+from scripts.benchmark import budget_metrics, file_sha256, metrics, validation_threshold
+from scripts.download_elliptic import URL as DOWNLOAD_URL
+
+MODEL_PARAMS = {
+    "max_iter": 100,
+    "max_leaf_nodes": 31,
+    "learning_rate": 0.1,
+    "l2_regularization": 1,
+    "early_stopping": False,
+    "random_state": 42,
+}
+
+
+def _metrics(y, scores, threshold, budget):
+    result = metrics(y, scores, threshold)
+    result.pop("top_1_percent")
+    result["review_budget"] = budget_metrics(y, scores, budget)
+    return result
+
+
+def run_benchmark(frame, edges, review_budget=0.01, *, model_params=None):
+    if not math.isfinite(review_budget) or not 0 < review_budget <= 1:
+        raise ValueError("review budget must be in (0, 1]")
+    frame = frame.sort_values(["time_step", "txId"], kind="stable").reset_index(drop=True)
+    if not frame.is_illicit.isin([-1, 0, 1]).all():
+        raise ValueError("labels must be -1, 0 or 1")
+    frame = pd.concat([frame, build_graph_features(frame, edges)], axis=1)
+    train, valid, test = chronological_split(frame, "time_step", "is_illicit")
+    train_labeled, valid_labeled, test_labeled = [
+        part.loc[part.is_illicit != -1] for part in (train, valid, test)
+    ]
+    for name, part in (
+        ("train", train_labeled),
+        ("validation", valid_labeled),
+        ("test", test_labeled),
+    ):
+        if part.empty or part.is_illicit.nunique() != 2:
+            raise ValueError(f"{name} requires both labelled classes")
+    variants = {
+        "local": LOCAL_COLUMNS,
+        "structure": LOCAL_COLUMNS + STRUCTURE_COLUMNS,
+        "neighborhood": LOCAL_COLUMNS + STRUCTURE_COLUMNS + NEIGHBOR_COLUMNS,
+    }
+    params = dict(MODEL_PARAMS if model_params is None else model_params)
+    validations, tests, windows = {}, {}, {}
+    for name, columns in variants.items():
+        model = HistGradientBoostingClassifier(**params)
+        model.fit(train_labeled[columns], train_labeled.is_illicit)
+        valid_scores = model.predict_proba(valid_labeled[columns])[:, 1]
+        threshold = validation_threshold(valid_labeled.is_illicit, valid_scores)
+        validations[name] = _metrics(
+            valid_labeled.is_illicit, valid_scores, threshold, review_budget
+        )
+        test_scores = model.predict_proba(test_labeled[columns])[:, 1]
+        tests[name] = _metrics(test_labeled.is_illicit, test_scores, threshold, review_budget)
+        windows[name] = {}
+        for step in sorted(test.time_step.unique()):
+            mask = test_labeled.time_step.to_numpy() == step
+            y, scores = test_labeled.is_illicit.to_numpy()[mask], test_scores[mask]
+            if len(y) == 0:
+                windows[name][str(int(step))] = {
+                    "labelled": 0,
+                    "average_precision": None,
+                    "roc_auc": None,
+                    "review_budget": None,
+                }
+            elif len(np.unique(y)) == 1:
+                windows[name][str(int(step))] = {
+                    "labelled": len(y),
+                    "average_precision": None,
+                    "roc_auc": None,
+                    "review_budget": budget_metrics(y, scores, review_budget),
+                }
+            else:
+                windows[name][str(int(step))] = {
+                    "labelled": len(y),
+                    **_metrics(y, scores, threshold, review_budget),
+                }
+    selected = max(variants, key=lambda name: validations[name]["average_precision"])
+
+    def split_info(part):
+        return {
+            "rows": len(part),
+            "labelled": int((part.is_illicit != -1).sum()),
+            "unknown": int((part.is_illicit == -1).sum()),
+            "illicit": int((part.is_illicit == 1).sum()),
+            "licit": int((part.is_illicit == 0).sum()),
+            "time_min": int(part.time_step.min()),
+            "time_max": int(part.time_step.max()),
+        }
+
+    return {
+        "status": "completed",
+        "dataset": "Elliptic",
+        "seed": 42,
+        "model": {"class": "HistGradientBoostingClassifier", "params": params},
+        "protocol": "Completed-snapshot offline features; 60/20/20 distinct time steps split before filtering unknown labels; validation AP selects variant and F1 selects thresholds; no refit; all prespecified variants tested",
+        "review_budget": review_budget,
+        "features": variants,
+        "splits": {
+            "train": split_info(train),
+            "validation": split_info(valid),
+            "test": split_info(test),
+        },
+        "validation": validations,
+        "selected_variant": selected,
+        "test": tests,
+        "test_by_time_step": windows,
+        "versions": {
+            "python": platform.python_version(),
+            "numpy": np.__version__,
+            "pandas": pd.__version__,
+            "sklearn": sklearn.__version__,
+        },
+        "sources": {
+            "paper": "https://arxiv.org/abs/1908.02591",
+            "download": DOWNLOAD_URL,
+            "pyg": "https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.EllipticBitcoinDataset.html",
+            "original": "https://www.kaggle.com/datasets/ellipticco/elliptic-data-set",
+        },
+        "limitations": [
+            "Features use completed snapshots and are not a strictly online evaluation.",
+            "Unknown labels are excluded from metrics; review budget applies only to the labelled cohort.",
+            "Local features are anonymous and their real-time availability cannot be verified.",
+            "The 72 upstream aggregate features and current time step are excluded from model inputs.",
+            "One historical split and unobserved label delay limit conclusions.",
+            "No financial impact or deployment claim is made; scores are not calibrated probabilities.",
+        ],
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data-dir", type=Path, default=Path("data/raw/elliptic"))
+    parser.add_argument("--output", type=Path, default=Path("reports/elliptic.json"))
+    parser.add_argument("--review-budget", type=float, default=0.01)
+    args = parser.parse_args()
+    frame, edges = load_elliptic(args.data_dir)
+    report = run_benchmark(frame, edges, args.review_budget)
+    root = Path(__file__).resolve().parents[1]
+    report["input_sha256"] = {
+        name: file_sha256(args.data_dir / name)
+        for name in (
+            "elliptic_txs_features.csv",
+            "elliptic_txs_classes.csv",
+            "elliptic_txs_edgelist.csv",
+        )
+    }
+    report["source_sha256"] = {
+        name: file_sha256(root / name)
+        for name in (
+            "scripts/benchmark_elliptic.py",
+            "scripts/benchmark.py",
+            "scripts/download_elliptic.py",
+            "scripts/download_creditcard.py",
+            "fraudguard/elliptic.py",
+            "fraudguard/data.py",
+        )
+    }
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
+    print(json.dumps({"selected_variant": report["selected_variant"]}))
+
+
+if __name__ == "__main__":
+    main()

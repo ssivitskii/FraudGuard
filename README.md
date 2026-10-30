@@ -9,6 +9,7 @@
   <a href="#measured-result">Results</a> &nbsp;·&nbsp;
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
   <a href="#reproduce-the-ulb-experiment">Reproduce</a> &nbsp;·&nbsp;
+  <a href="#elliptic-graph-experiment">Elliptic</a> &nbsp;·&nbsp;
   <a href="#existing-application">Local app</a> &nbsp;·&nbsp;
   <a href="#evidence-and-limits">Limits</a>
 </p>
@@ -20,6 +21,9 @@
 FraudGuard compares Logistic Regression and Random Forest for transaction
 classification. The portfolio benchmark uses the ULB credit-card schema and
 separates model selection, threshold selection and final evaluation.
+
+An additional Elliptic AML experiment compares local transaction attributes,
+graph structure and neighbouring features on future completed graph snapshots.
 
 ## Measured result
 
@@ -62,6 +66,7 @@ only evaluates that frozen choice.
 | Workflow | Entry point | Output |
 | --- | --- | --- |
 | Chronological ULB experiment | [`scripts/benchmark.py`](scripts/benchmark.py) | Versioned JSON report with provenance and review-budget metrics |
+| Elliptic graph comparison | [`scripts/benchmark_elliptic.py`](scripts/benchmark_elliptic.py) | Three fixed feature variants on future snapshots, with a shared review budget |
 | Generic transaction application | [`scripts/train.py`](scripts/train.py) → [`app/app.py`](app/app.py) | App-compatible model and interactive predictions |
 
 ## Benchmark protocol
@@ -104,6 +109,89 @@ file size and SHA-256; consult original data terms separately from the code lice
 The benchmark expects the original `Time,V1..V28,Amount,Class` schema and rejects
 missing, infinite or nonbinary inputs. It does not write a model over the app's
 artifact: its numerical features differ from the interactive form.
+
+## Elliptic graph experiment
+
+**Question:** do graph structure and neighbouring transaction attributes improve
+illicit-transaction classification on future completed Bitcoin graph snapshots?
+
+| Variant | Inputs | Features |
+| --- | --- | ---: |
+| `local` | Supplied local transaction attributes, excluding time | 93 |
+| `structure` | Local attributes + directed in-degree and out-degree | 95 |
+| `neighborhood` | Structure inputs + incoming/outgoing neighbours' mean local attributes | 281 |
+
+All three use the same `HistGradientBoostingClassifier` parameters. Neighbour
+means are rebuilt from the edge list without labels; a missing neighbourhood has
+zero means and zero degree. The 72 supplied aggregate features are excluded.
+
+### Evaluation protocol
+
+- Join labels by transaction ID. `1` means illicit, `2` licit, and `unknown` is
+  unlabelled. Unknown nodes contribute only unlabelled graph context and never
+  enter model fitting or quality metrics.
+- Split all 49 distinct time steps before filtering unknown labels: **1–29
+  training / 30–39 validation / 40–49 test**. Models never fit future snapshots.
+- Each graph is a **completed snapshot**, including its unlabelled nodes. There
+  are no edges between time steps. Adding future snapshots cannot change earlier
+  graph features; this does not establish transaction-arrival-time availability.
+- Select the variant by validation average precision and each threshold by
+  validation F1. Freeze all models and thresholds; evaluate the three predeclared
+  variants on the same held-out transactions. No refit or test-driven selection.
+- Apply an exact top-1% review budget to the **labelled test cohort**. Report both
+  pooled metrics and separate time-step results. Per-step capacities are separate
+  queues and need not sum to the pooled capacity.
+
+### Reproduce
+
+The dataset was published by Elliptic and the MIT–IBM Watson AI Lab for research:
+[paper](https://arxiv.org/abs/1908.02591). The downloader uses the author's [public dataset export](https://www.kaggle.com/datasets/ellipticco/elliptic-data-set),
+which requires no account credentials or phone/identity verification. It verifies the
+three CSV hashes; raw data is excluded from Git.
+
+With the benchmark environment above activated:
+
+```bash
+python -m scripts.download_elliptic
+OMP_NUM_THREADS=4 python -m scripts.benchmark_elliptic \
+  --data-dir data/raw/elliptic \
+  --review-budget 0.01 \
+  --output reports/elliptic.json
+```
+
+The report records input/source hashes, feature lists, model parameters, class
+counts, time boundaries, validation scores and test results by time step.
+
+### Measured comparison
+
+Completed on **203,769 nodes / 234,355 edges / 49 snapshots**. Of the nodes,
+157,205 have unknown labels. The final test has **11,184 labelled transactions,
+including 636 illicit**, plus 35,463 unknown nodes used only as graph context.
+
+| Variant | Validation AP | Test AP | Test precision @ 1% | Test recall @ 1% |
+| --- | ---: | ---: | ---: | ---: |
+| Local | 0.9652 | 0.6337 | 1.0000 | 0.1761 |
+| + Structure | 0.9657 | 0.6362 | 1.0000 | 0.1761 |
+| + Neighbour means | **0.9747** | **0.6634** | 1.0000 | 0.1761 |
+
+Validation selected `neighborhood` before test comparison. Its pooled test AP is
+0.0297 above `local` on this split, but **all three find 112 illicit transactions
+in 112 reviews**: there is no gain at the chosen 1% budget. The much lower test AP
+than validation AP also limits claims about performance on later snapshots.
+These results do not establish statistical superiority or operational precision.
+
+[Full measured report, time-step results and provenance](reports/elliptic.json).
+Only display values are rounded here; the report preserves full precision.
+
+### Interpretation limits
+
+This is an offline AML experiment on completed snapshots. The data has no exact
+within-snapshot ordering or label-confirmation timestamps; the supplied local
+features are anonymous and their real-time availability cannot be audited.
+Because unknown labels are excluded, review metrics do not estimate performance
+on the entire operational transaction stream. One historical split does not
+establish general superiority, calibrated probabilities or financial impact.
+The existing Streamlit form uses its separate generic-transaction schema.
 
 ## Existing application
 
