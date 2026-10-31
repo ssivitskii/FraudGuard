@@ -1735,7 +1735,7 @@
     },
     "source_sha256": {
       "scripts/replay_handbook.py": "7e13fbdef7fde856fafa2ce20baba561515c271e8739b03336b63363ca7c3007",
-      "fraudguard/handbook.py": "6965f0b65814d02e7bbc2fce7a094040d78cf40d1a84311646e87122698b9172",
+      "fraudguard/handbook.py": "9b199ec8629aa35ab145a963a788bc4b54a519131e9ef55e9ecccc3c43dfdbe5",
       "scripts/benchmark.py": "6b4f174ef0e7246b503307efc457665d85c56abbad56dbd4ac021cd98bb57922",
       "scripts/download_handbook.py": "f49ebb84ac58eaf298b1a950f74c0e4bed7dda63b1daebccec50714498c029a1",
       "requirements-benchmark.txt": "243948bf8a6e39b2e27b9348416d9595ffbd81ee576749436460e11b402adb08"

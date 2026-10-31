@@ -1,6 +1,7 @@
 """Point-in-time transaction features for the simulated handbook dataset."""
 
 from pathlib import Path
+from typing import cast
 
 import numpy as np
 import pandas as pd
@@ -75,7 +76,9 @@ def validate_transactions(frame: pd.DataFrame) -> pd.DataFrame:
         if column == "TX_FRAUD" and not np.isin(values, [0, 1]).all():
             raise ValueError("TX_FRAUD must be binary")
         result[column] = values if column == "TX_AMOUNT" else values.astype(np.int8)
-    return result.sort_values(["TX_DATETIME", "TRANSACTION_ID"]).reset_index(drop=True)
+    return cast(
+        pd.DataFrame, result.sort_values(["TX_DATETIME", "TRANSACTION_ID"]).reset_index(drop=True)
+    )
 
 
 def load_handbook(path: Path) -> pd.DataFrame:
@@ -161,4 +164,4 @@ def build_history_features(frame: pd.DataFrame, label_delay_days: int = 7) -> pd
     )
     features = features.iloc[positions].copy()
     features.index = frame.index
-    return features[HISTORY_COLUMNS]
+    return cast(pd.DataFrame, features[HISTORY_COLUMNS])
