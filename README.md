@@ -10,6 +10,7 @@
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
   <a href="#reproduce-the-ulb-experiment">Reproduce</a> &nbsp;·&nbsp;
   <a href="#elliptic-graph-experiment">Elliptic</a> &nbsp;·&nbsp;
+  <a href="#temporal-stability-and-review-policies">Diagnostics</a> &nbsp;·&nbsp;
   <a href="#existing-application">Local app</a> &nbsp;·&nbsp;
   <a href="#evidence-and-limits">Limits</a>
 </p>
@@ -156,11 +157,16 @@ python -m scripts.download_elliptic
 OMP_NUM_THREADS=4 python -m scripts.benchmark_elliptic \
   --data-dir data/raw/elliptic \
   --review-budget 0.01 \
+  --historical-windows \
   --output reports/elliptic.json
+python -m scripts.plot_elliptic --report reports/elliptic.json
 ```
 
 The report records input/source hashes, feature lists, model parameters, class
-counts, time boundaries, validation scores and test results by time step.
+counts, time boundaries, validation scores, test results by time step and review
+policies. The plotting command reads this report without training models; it writes
+three SVG figures to `docs/assets/elliptic/`. Omitting `--historical-windows` runs
+only the original main split and its review-policy diagnostics.
 
 ### Measured comparison
 
@@ -182,6 +188,69 @@ These results do not establish statistical superiority or operational precision.
 
 [Full measured report, time-step results and provenance](reports/elliptic.json).
 Only display values are rounded here; the report preserves full precision.
+
+### Temporal stability and review policies
+
+This follow-up diagnoses the **already inspected test period**; it does not use
+that period to tune models, select a budget or establish an independent new win.
+The original three feature variants, model parameters, main split and all original
+validation/test metrics are unchanged.
+
+Three prespecified historical windows add context before the final test. Each
+window trains new models on its own training period, selects a variant and each
+threshold on validation, then evaluates without refitting. Labels are assumed
+available for fitting and validation; actual label-arrival times are not observed.
+The overlapping windows are diagnostic comparisons, not independent replicates.
+
+| Train | Validation | Evaluation | Validation-selected variant | Evaluation AP: local / structure / neighborhood |
+| --- | --- | --- | --- | --- |
+| 1–19 | 20–24 | 25–29 | Structure | 0.7799 / 0.7860 / 0.7815 |
+| 1–24 | 25–29 | 30–34 | Neighborhood | 0.9669 / 0.9709 / 0.9844 |
+| 1–29 | 30–34 | 35–39 | Neighborhood | 0.9357 / 0.9368 / 0.9499 |
+
+On the final test, neighborhood AP falls from **0.8883 at step 42 to 0.0484 at
+step 43**. This is an observed change in performance, not evidence for a particular
+cause. Class prevalence also changes, and steps 45 and 46 have only 5 and 2 known
+illicit transactions respectively. The figure shows cohort counts alongside AP;
+unknown labels are never treated as legitimate transactions. AP/ROC are undefined
+for single-class steps, and recall is undefined when no illicit labels are present.
+
+![Elliptic temporal diagnostics: AP by test snapshot with labelled prevalence, labelled and unknown cohort sizes, and separate historical validation/evaluation pairs.](docs/assets/elliptic/time-stability.svg)
+
+**Prespecified review policies:** fractions 0.5%, 1%, 2%, 5%; fixed capacities
+5, 10, 25, 50 per snapshot; and each model's original validation-F1 threshold.
+Fractional budgets round up within each queue; fixed capacities are capped at the
+labelled queue size. Ties use time step then transaction ID for the pooled queue,
+and transaction ID within a snapshot. No policy uses labels to break ties.
+
+A pooled queue ranks all ten test snapshots together. Independent queues apply
+the budget separately to each completed snapshot, with no transfer of capacity
+between steps. These are different workloads and both are offline: a snapshot
+is not a day, and no within-snapshot arrival order is available. Aggregated
+precision and recall divide summed counts, rather than averaging step-level rates.
+
+| Policy, selected neighborhood model | Reviewed | Known illicit found / 636 | Precision | Recall |
+| --- | ---: | ---: | ---: | ---: |
+| Pooled 1% | 112 | 112 | 1.0000 | 0.1761 |
+| 1% per snapshot | 117 | 50 | 0.4274 | 0.0786 |
+| 5% per snapshot | 564 | 238 | 0.4220 | 0.3742 |
+| 25 reviews per snapshot | 250 | 86 | 0.3440 | 0.1352 |
+| Frozen validation threshold | 417 | 354 | 0.8489 | 0.5566 |
+
+The threshold can allocate many reviews to some steps and few to others; it has
+**no per-step capacity guarantee**. Its total cannot be interpreted as a win at
+an equal review budget. At 5% per snapshot, local / structure / neighborhood find
+**231 / 232 / 238** illicit transactions in the same 564 reviews. This descriptive
+difference on one previously inspected period does not establish superiority.
+
+![Precision and recall across review fractions, comparing a pooled test queue with independent queues per snapshot for all three variants.](docs/assets/elliptic/review-budget.svg)
+
+![Total known illicit transactions found versus total reviews for per-snapshot fractions, fixed capacities and validation-frozen thresholds.](docs/assets/elliptic/policy-workload.svg)
+
+All policies rank only the **11,184 labelled test transactions**. The other
+**35,463 transactions have unknown labels** and remain graph context. These
+results do not estimate precision or workload for an operational queue containing
+all transactions. [Exact counts, policies and historical windows](reports/elliptic.json).
 
 ### Interpretation limits
 

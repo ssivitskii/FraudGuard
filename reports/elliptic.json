@@ -1068,6 +1068,2798 @@
       }
     }
   },
+  "time_step_counts": {
+    "1": {
+      "rows": 7880,
+      "labelled": 2147,
+      "unknown": 5733,
+      "illicit": 17,
+      "licit": 2130,
+      "prevalence": 0.007918025151374011
+    },
+    "2": {
+      "rows": 4544,
+      "labelled": 1117,
+      "unknown": 3427,
+      "illicit": 18,
+      "licit": 1099,
+      "prevalence": 0.01611459265890779
+    },
+    "3": {
+      "rows": 6621,
+      "labelled": 1279,
+      "unknown": 5342,
+      "illicit": 11,
+      "licit": 1268,
+      "prevalence": 0.008600469116497263
+    },
+    "4": {
+      "rows": 5693,
+      "labelled": 1440,
+      "unknown": 4253,
+      "illicit": 30,
+      "licit": 1410,
+      "prevalence": 0.020833333333333332
+    },
+    "5": {
+      "rows": 6803,
+      "labelled": 1882,
+      "unknown": 4921,
+      "illicit": 8,
+      "licit": 1874,
+      "prevalence": 0.004250797024442083
+    },
+    "6": {
+      "rows": 4328,
+      "labelled": 485,
+      "unknown": 3843,
+      "illicit": 5,
+      "licit": 480,
+      "prevalence": 0.010309278350515464
+    },
+    "7": {
+      "rows": 6048,
+      "labelled": 1203,
+      "unknown": 4845,
+      "illicit": 102,
+      "licit": 1101,
+      "prevalence": 0.08478802992518704
+    },
+    "8": {
+      "rows": 4457,
+      "labelled": 1165,
+      "unknown": 3292,
+      "illicit": 67,
+      "licit": 1098,
+      "prevalence": 0.05751072961373391
+    },
+    "9": {
+      "rows": 4996,
+      "labelled": 778,
+      "unknown": 4218,
+      "illicit": 248,
+      "licit": 530,
+      "prevalence": 0.31876606683804626
+    },
+    "10": {
+      "rows": 6727,
+      "labelled": 972,
+      "unknown": 5755,
+      "illicit": 18,
+      "licit": 954,
+      "prevalence": 0.018518518518518517
+    },
+    "11": {
+      "rows": 4296,
+      "labelled": 696,
+      "unknown": 3600,
+      "illicit": 131,
+      "licit": 565,
+      "prevalence": 0.1882183908045977
+    },
+    "12": {
+      "rows": 2047,
+      "labelled": 506,
+      "unknown": 1541,
+      "illicit": 16,
+      "licit": 490,
+      "prevalence": 0.03162055335968379
+    },
+    "13": {
+      "rows": 4528,
+      "labelled": 809,
+      "unknown": 3719,
+      "illicit": 291,
+      "licit": 518,
+      "prevalence": 0.35970333745364647
+    },
+    "14": {
+      "rows": 2022,
+      "labelled": 417,
+      "unknown": 1605,
+      "illicit": 43,
+      "licit": 374,
+      "prevalence": 0.10311750599520383
+    },
+    "15": {
+      "rows": 3639,
+      "labelled": 618,
+      "unknown": 3021,
+      "illicit": 147,
+      "licit": 471,
+      "prevalence": 0.23786407766990292
+    },
+    "16": {
+      "rows": 2975,
+      "labelled": 530,
+      "unknown": 2445,
+      "illicit": 128,
+      "licit": 402,
+      "prevalence": 0.24150943396226415
+    },
+    "17": {
+      "rows": 3385,
+      "labelled": 811,
+      "unknown": 2574,
+      "illicit": 99,
+      "licit": 712,
+      "prevalence": 0.1220715166461159
+    },
+    "18": {
+      "rows": 1976,
+      "labelled": 389,
+      "unknown": 1587,
+      "illicit": 52,
+      "licit": 337,
+      "prevalence": 0.13367609254498714
+    },
+    "19": {
+      "rows": 3506,
+      "labelled": 745,
+      "unknown": 2761,
+      "illicit": 80,
+      "licit": 665,
+      "prevalence": 0.10738255033557047
+    },
+    "20": {
+      "rows": 4291,
+      "labelled": 900,
+      "unknown": 3391,
+      "illicit": 260,
+      "licit": 640,
+      "prevalence": 0.28888888888888886
+    },
+    "21": {
+      "rows": 3537,
+      "labelled": 641,
+      "unknown": 2896,
+      "illicit": 100,
+      "licit": 541,
+      "prevalence": 0.15600624024961
+    },
+    "22": {
+      "rows": 5894,
+      "labelled": 1763,
+      "unknown": 4131,
+      "illicit": 158,
+      "licit": 1605,
+      "prevalence": 0.08961996596710153
+    },
+    "23": {
+      "rows": 4165,
+      "labelled": 1187,
+      "unknown": 2978,
+      "illicit": 53,
+      "licit": 1134,
+      "prevalence": 0.04465037910699242
+    },
+    "24": {
+      "rows": 4592,
+      "labelled": 1126,
+      "unknown": 3466,
+      "illicit": 137,
+      "licit": 989,
+      "prevalence": 0.1216696269982238
+    },
+    "25": {
+      "rows": 2314,
+      "labelled": 594,
+      "unknown": 1720,
+      "illicit": 118,
+      "licit": 476,
+      "prevalence": 0.19865319865319866
+    },
+    "26": {
+      "rows": 2523,
+      "labelled": 517,
+      "unknown": 2006,
+      "illicit": 96,
+      "licit": 421,
+      "prevalence": 0.18568665377176016
+    },
+    "27": {
+      "rows": 1089,
+      "labelled": 206,
+      "unknown": 883,
+      "illicit": 24,
+      "licit": 182,
+      "prevalence": 0.11650485436893204
+    },
+    "28": {
+      "rows": 1653,
+      "labelled": 284,
+      "unknown": 1369,
+      "illicit": 85,
+      "licit": 199,
+      "prevalence": 0.2992957746478873
+    },
+    "29": {
+      "rows": 4275,
+      "labelled": 1174,
+      "unknown": 3101,
+      "illicit": 329,
+      "licit": 845,
+      "prevalence": 0.28023850085178875
+    },
+    "30": {
+      "rows": 2483,
+      "labelled": 524,
+      "unknown": 1959,
+      "illicit": 83,
+      "licit": 441,
+      "prevalence": 0.15839694656488548
+    },
+    "31": {
+      "rows": 2816,
+      "labelled": 710,
+      "unknown": 2106,
+      "illicit": 106,
+      "licit": 604,
+      "prevalence": 0.14929577464788732
+    },
+    "32": {
+      "rows": 4525,
+      "labelled": 1323,
+      "unknown": 3202,
+      "illicit": 342,
+      "licit": 981,
+      "prevalence": 0.2585034013605442
+    },
+    "33": {
+      "rows": 3151,
+      "labelled": 441,
+      "unknown": 2710,
+      "illicit": 23,
+      "licit": 418,
+      "prevalence": 0.05215419501133787
+    },
+    "34": {
+      "rows": 2486,
+      "labelled": 515,
+      "unknown": 1971,
+      "illicit": 37,
+      "licit": 478,
+      "prevalence": 0.07184466019417475
+    },
+    "35": {
+      "rows": 5507,
+      "labelled": 1341,
+      "unknown": 4166,
+      "illicit": 182,
+      "licit": 1159,
+      "prevalence": 0.13571961222967935
+    },
+    "36": {
+      "rows": 6393,
+      "labelled": 1708,
+      "unknown": 4685,
+      "illicit": 33,
+      "licit": 1675,
+      "prevalence": 0.019320843091334895
+    },
+    "37": {
+      "rows": 3306,
+      "labelled": 498,
+      "unknown": 2808,
+      "illicit": 40,
+      "licit": 458,
+      "prevalence": 0.08032128514056225
+    },
+    "38": {
+      "rows": 2891,
+      "labelled": 756,
+      "unknown": 2135,
+      "illicit": 111,
+      "licit": 645,
+      "prevalence": 0.14682539682539683
+    },
+    "39": {
+      "rows": 2760,
+      "labelled": 1183,
+      "unknown": 1577,
+      "illicit": 81,
+      "licit": 1102,
+      "prevalence": 0.06846999154691462
+    },
+    "40": {
+      "rows": 4481,
+      "labelled": 1211,
+      "unknown": 3270,
+      "illicit": 112,
+      "licit": 1099,
+      "prevalence": 0.09248554913294797
+    },
+    "41": {
+      "rows": 5342,
+      "labelled": 1132,
+      "unknown": 4210,
+      "illicit": 116,
+      "licit": 1016,
+      "prevalence": 0.10247349823321555
+    },
+    "42": {
+      "rows": 7140,
+      "labelled": 2154,
+      "unknown": 4986,
+      "illicit": 239,
+      "licit": 1915,
+      "prevalence": 0.11095636025998143
+    },
+    "43": {
+      "rows": 5063,
+      "labelled": 1370,
+      "unknown": 3693,
+      "illicit": 24,
+      "licit": 1346,
+      "prevalence": 0.017518248175182483
+    },
+    "44": {
+      "rows": 4975,
+      "labelled": 1591,
+      "unknown": 3384,
+      "illicit": 24,
+      "licit": 1567,
+      "prevalence": 0.01508485229415462
+    },
+    "45": {
+      "rows": 5598,
+      "labelled": 1221,
+      "unknown": 4377,
+      "illicit": 5,
+      "licit": 1216,
+      "prevalence": 0.004095004095004095
+    },
+    "46": {
+      "rows": 3519,
+      "labelled": 712,
+      "unknown": 2807,
+      "illicit": 2,
+      "licit": 710,
+      "prevalence": 0.0028089887640449437
+    },
+    "47": {
+      "rows": 5121,
+      "labelled": 846,
+      "unknown": 4275,
+      "illicit": 22,
+      "licit": 824,
+      "prevalence": 0.026004728132387706
+    },
+    "48": {
+      "rows": 2954,
+      "labelled": 471,
+      "unknown": 2483,
+      "illicit": 36,
+      "licit": 435,
+      "prevalence": 0.07643312101910828
+    },
+    "49": {
+      "rows": 2454,
+      "labelled": 476,
+      "unknown": 1978,
+      "illicit": 56,
+      "licit": 420,
+      "prevalence": 0.11764705882352941
+    }
+  },
+  "review_policy_config": {
+    "fractions": [
+      0.005,
+      0.01,
+      0.02,
+      0.05
+    ],
+    "capacities": [
+      5,
+      10,
+      25,
+      50
+    ],
+    "cohort": "labelled rows only; unknown rows remain graph context",
+    "tie_order": "time_step, txId for pooled queues; txId within each step",
+    "interpretation": "pooled fraction queues and summed per-step queues have different workloads"
+  },
+  "test_review_policies": {
+    "local": {
+      "pooled_fractions": [
+        {
+          "fraction": 0.005,
+          "reviewed": 56,
+          "frauds_found": 56,
+          "precision": 1.0,
+          "recall": 0.0880503144654088
+        },
+        {
+          "fraction": 0.01,
+          "reviewed": 112,
+          "frauds_found": 112,
+          "precision": 1.0,
+          "recall": 0.1761006289308176
+        },
+        {
+          "fraction": 0.02,
+          "reviewed": 224,
+          "frauds_found": 224,
+          "precision": 1.0,
+          "recall": 0.3522012578616352
+        },
+        {
+          "fraction": 0.05,
+          "reviewed": 560,
+          "frauds_found": 357,
+          "precision": 0.6375,
+          "recall": 0.5613207547169812
+        }
+      ],
+      "per_step": {
+        "40": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 7,
+              "precision": 1.0,
+              "recall": 0.0625
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 13,
+              "frauds_found": 13,
+              "precision": 1.0,
+              "recall": 0.11607142857142858
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.22321428571428573
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 61,
+              "frauds_found": 58,
+              "precision": 0.9508196721311475,
+              "recall": 0.5178571428571429
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.044642857142857144
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.08928571428571429
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.22321428571428573
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.44642857142857145
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 79,
+            "frauds_found": 62,
+            "precision": 0.7848101265822784,
+            "recall": 0.5535714285714286
+          }
+        },
+        "41": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 6,
+              "frauds_found": 6,
+              "precision": 1.0,
+              "recall": 0.05172413793103448
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 12,
+              "frauds_found": 12,
+              "precision": 1.0,
+              "recall": 0.10344827586206896
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 23,
+              "frauds_found": 23,
+              "precision": 1.0,
+              "recall": 0.19827586206896552
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 57,
+              "frauds_found": 57,
+              "precision": 1.0,
+              "recall": 0.49137931034482757
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.04310344827586207
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.08620689655172414
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.21551724137931033
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.43103448275862066
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 123,
+            "frauds_found": 103,
+            "precision": 0.8373983739837398,
+            "recall": 0.8879310344827587
+          }
+        },
+        "42": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 11,
+              "frauds_found": 11,
+              "precision": 1.0,
+              "recall": 0.04602510460251046
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 22,
+              "frauds_found": 22,
+              "precision": 1.0,
+              "recall": 0.09205020920502092
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 44,
+              "frauds_found": 44,
+              "precision": 1.0,
+              "recall": 0.18410041841004185
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 108,
+              "frauds_found": 108,
+              "precision": 1.0,
+              "recall": 0.45188284518828453
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.02092050209205021
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.04184100418410042
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.10460251046025104
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.20920502092050208
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 194,
+            "frauds_found": 173,
+            "precision": 0.8917525773195877,
+            "recall": 0.7238493723849372
+          }
+        },
+        "43": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 14,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 28,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 69,
+              "frauds_found": 2,
+              "precision": 0.028985507246376812,
+              "recall": 0.08333333333333333
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 1,
+              "precision": 0.02,
+              "recall": 0.041666666666666664
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 9,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "44": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 8,
+              "frauds_found": 1,
+              "precision": 0.125,
+              "recall": 0.041666666666666664
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 16,
+              "frauds_found": 2,
+              "precision": 0.125,
+              "recall": 0.08333333333333333
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 32,
+              "frauds_found": 3,
+              "precision": 0.09375,
+              "recall": 0.125
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 80,
+              "frauds_found": 4,
+              "precision": 0.05,
+              "recall": 0.16666666666666666
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.041666666666666664
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 2,
+              "precision": 0.08,
+              "recall": 0.08333333333333333
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 4,
+              "precision": 0.08,
+              "recall": 0.16666666666666666
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 20,
+            "frauds_found": 2,
+            "precision": 0.1,
+            "recall": 0.08333333333333333
+          }
+        },
+        "45": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 13,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 62,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 13,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "46": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 4,
+              "frauds_found": 1,
+              "precision": 0.25,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 8,
+              "frauds_found": 1,
+              "precision": 0.125,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 15,
+              "frauds_found": 1,
+              "precision": 0.06666666666666667,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 36,
+              "frauds_found": 1,
+              "precision": 0.027777777777777776,
+              "recall": 0.5
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 1,
+              "precision": 0.2,
+              "recall": 0.5
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.5
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 1,
+              "precision": 0.04,
+              "recall": 0.5
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 1,
+              "precision": 0.02,
+              "recall": 0.5
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 14,
+            "frauds_found": 1,
+            "precision": 0.07142857142857142,
+            "recall": 0.5
+          }
+        },
+        "47": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 9,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 17,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 43,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 5,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "48": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 3,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 24,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 3,
+              "precision": 0.06,
+              "recall": 0.08333333333333333
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 3,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "49": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 3,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 24,
+              "frauds_found": 1,
+              "precision": 0.041666666666666664,
+              "recall": 0.017857142857142856
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 1,
+              "precision": 0.04,
+              "recall": 0.017857142857142856
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 3,
+              "precision": 0.06,
+              "recall": 0.05357142857142857
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5676663372759994,
+            "reviewed": 8,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "summed_per_step": {
+        "fractions": [
+          {
+            "fraction": 0.005,
+            "reviewed": 61,
+            "frauds_found": 26,
+            "precision": 0.4262295081967213,
+            "recall": 0.040880503144654086
+          },
+          {
+            "fraction": 0.01,
+            "reviewed": 117,
+            "frauds_found": 50,
+            "precision": 0.42735042735042733,
+            "recall": 0.07861635220125786
+          },
+          {
+            "fraction": 0.02,
+            "reviewed": 229,
+            "frauds_found": 96,
+            "precision": 0.4192139737991266,
+            "recall": 0.1509433962264151
+          },
+          {
+            "fraction": 0.05,
+            "reviewed": 564,
+            "frauds_found": 231,
+            "precision": 0.4095744680851064,
+            "recall": 0.3632075471698113
+          }
+        ],
+        "capacities": [
+          {
+            "capacity": 5,
+            "reviewed": 50,
+            "frauds_found": 16,
+            "precision": 0.32,
+            "recall": 0.025157232704402517
+          },
+          {
+            "capacity": 10,
+            "reviewed": 100,
+            "frauds_found": 32,
+            "precision": 0.32,
+            "recall": 0.050314465408805034
+          },
+          {
+            "capacity": 25,
+            "reviewed": 250,
+            "frauds_found": 79,
+            "precision": 0.316,
+            "recall": 0.12421383647798742
+          },
+          {
+            "capacity": 50,
+            "reviewed": 500,
+            "frauds_found": 162,
+            "precision": 0.324,
+            "recall": 0.25471698113207547
+          }
+        ],
+        "frozen_threshold": {
+          "threshold": 0.5676663372759994,
+          "reviewed": 468,
+          "frauds_found": 341,
+          "precision": 0.7286324786324786,
+          "recall": 0.5361635220125787
+        }
+      }
+    },
+    "structure": {
+      "pooled_fractions": [
+        {
+          "fraction": 0.005,
+          "reviewed": 56,
+          "frauds_found": 56,
+          "precision": 1.0,
+          "recall": 0.0880503144654088
+        },
+        {
+          "fraction": 0.01,
+          "reviewed": 112,
+          "frauds_found": 112,
+          "precision": 1.0,
+          "recall": 0.1761006289308176
+        },
+        {
+          "fraction": 0.02,
+          "reviewed": 224,
+          "frauds_found": 224,
+          "precision": 1.0,
+          "recall": 0.3522012578616352
+        },
+        {
+          "fraction": 0.05,
+          "reviewed": 560,
+          "frauds_found": 365,
+          "precision": 0.6517857142857143,
+          "recall": 0.5738993710691824
+        }
+      ],
+      "per_step": {
+        "40": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 7,
+              "precision": 1.0,
+              "recall": 0.0625
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 13,
+              "frauds_found": 13,
+              "precision": 1.0,
+              "recall": 0.11607142857142858
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.22321428571428573
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 61,
+              "frauds_found": 58,
+              "precision": 0.9508196721311475,
+              "recall": 0.5178571428571429
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.044642857142857144
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.08928571428571429
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.22321428571428573
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.44642857142857145
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 86,
+            "frauds_found": 69,
+            "precision": 0.8023255813953488,
+            "recall": 0.6160714285714286
+          }
+        },
+        "41": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 6,
+              "frauds_found": 6,
+              "precision": 1.0,
+              "recall": 0.05172413793103448
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 12,
+              "frauds_found": 12,
+              "precision": 1.0,
+              "recall": 0.10344827586206896
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 23,
+              "frauds_found": 23,
+              "precision": 1.0,
+              "recall": 0.19827586206896552
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 57,
+              "frauds_found": 57,
+              "precision": 1.0,
+              "recall": 0.49137931034482757
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.04310344827586207
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.08620689655172414
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.21551724137931033
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.43103448275862066
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 133,
+            "frauds_found": 107,
+            "precision": 0.8045112781954887,
+            "recall": 0.9224137931034483
+          }
+        },
+        "42": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 11,
+              "frauds_found": 11,
+              "precision": 1.0,
+              "recall": 0.04602510460251046
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 22,
+              "frauds_found": 22,
+              "precision": 1.0,
+              "recall": 0.09205020920502092
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 44,
+              "frauds_found": 44,
+              "precision": 1.0,
+              "recall": 0.18410041841004185
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 108,
+              "frauds_found": 108,
+              "precision": 1.0,
+              "recall": 0.45188284518828453
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.02092050209205021
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.04184100418410042
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.10460251046025104
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.20920502092050208
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 207,
+            "frauds_found": 178,
+            "precision": 0.8599033816425121,
+            "recall": 0.7447698744769874
+          }
+        },
+        "43": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 14,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 28,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 69,
+              "frauds_found": 2,
+              "precision": 0.028985507246376812,
+              "recall": 0.08333333333333333
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 8,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "44": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 8,
+              "frauds_found": 1,
+              "precision": 0.125,
+              "recall": 0.041666666666666664
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 16,
+              "frauds_found": 1,
+              "precision": 0.0625,
+              "recall": 0.041666666666666664
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 32,
+              "frauds_found": 4,
+              "precision": 0.125,
+              "recall": 0.16666666666666666
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 80,
+              "frauds_found": 5,
+              "precision": 0.0625,
+              "recall": 0.20833333333333334
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.041666666666666664
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 2,
+              "precision": 0.08,
+              "recall": 0.08333333333333333
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 4,
+              "precision": 0.08,
+              "recall": 0.16666666666666666
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 22,
+            "frauds_found": 2,
+            "precision": 0.09090909090909091,
+            "recall": 0.08333333333333333
+          }
+        },
+        "45": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 13,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 62,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 13,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "46": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 4,
+              "frauds_found": 1,
+              "precision": 0.25,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 8,
+              "frauds_found": 1,
+              "precision": 0.125,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 15,
+              "frauds_found": 1,
+              "precision": 0.06666666666666667,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 36,
+              "frauds_found": 1,
+              "precision": 0.027777777777777776,
+              "recall": 0.5
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 1,
+              "precision": 0.2,
+              "recall": 0.5
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.5
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 1,
+              "precision": 0.04,
+              "recall": 0.5
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 2,
+              "precision": 0.04,
+              "recall": 1.0
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 18,
+            "frauds_found": 1,
+            "precision": 0.05555555555555555,
+            "recall": 0.5
+          }
+        },
+        "47": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 9,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 17,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 43,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 8,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "48": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 3,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 24,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 3,
+              "precision": 0.06,
+              "recall": 0.08333333333333333
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 5,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "49": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 3,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.017857142857142856
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 24,
+              "frauds_found": 1,
+              "precision": 0.041666666666666664,
+              "recall": 0.017857142857142856
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.017857142857142856
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 1,
+              "precision": 0.04,
+              "recall": 0.017857142857142856
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 4,
+              "precision": 0.08,
+              "recall": 0.07142857142857142
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.5219011552007413,
+            "reviewed": 11,
+            "frauds_found": 1,
+            "precision": 0.09090909090909091,
+            "recall": 0.017857142857142856
+          }
+        }
+      },
+      "summed_per_step": {
+        "fractions": [
+          {
+            "fraction": 0.005,
+            "reviewed": 61,
+            "frauds_found": 26,
+            "precision": 0.4262295081967213,
+            "recall": 0.040880503144654086
+          },
+          {
+            "fraction": 0.01,
+            "reviewed": 117,
+            "frauds_found": 49,
+            "precision": 0.4188034188034188,
+            "recall": 0.0770440251572327
+          },
+          {
+            "fraction": 0.02,
+            "reviewed": 229,
+            "frauds_found": 98,
+            "precision": 0.4279475982532751,
+            "recall": 0.1540880503144654
+          },
+          {
+            "fraction": 0.05,
+            "reviewed": 564,
+            "frauds_found": 232,
+            "precision": 0.41134751773049644,
+            "recall": 0.36477987421383645
+          }
+        ],
+        "capacities": [
+          {
+            "capacity": 5,
+            "reviewed": 50,
+            "frauds_found": 16,
+            "precision": 0.32,
+            "recall": 0.025157232704402517
+          },
+          {
+            "capacity": 10,
+            "reviewed": 100,
+            "frauds_found": 33,
+            "precision": 0.33,
+            "recall": 0.05188679245283019
+          },
+          {
+            "capacity": 25,
+            "reviewed": 250,
+            "frauds_found": 79,
+            "precision": 0.316,
+            "recall": 0.12421383647798742
+          },
+          {
+            "capacity": 50,
+            "reviewed": 500,
+            "frauds_found": 163,
+            "precision": 0.326,
+            "recall": 0.2562893081761006
+          }
+        ],
+        "frozen_threshold": {
+          "threshold": 0.5219011552007413,
+          "reviewed": 511,
+          "frauds_found": 358,
+          "precision": 0.700587084148728,
+          "recall": 0.5628930817610063
+        }
+      }
+    },
+    "neighborhood": {
+      "pooled_fractions": [
+        {
+          "fraction": 0.005,
+          "reviewed": 56,
+          "frauds_found": 56,
+          "precision": 1.0,
+          "recall": 0.0880503144654088
+        },
+        {
+          "fraction": 0.01,
+          "reviewed": 112,
+          "frauds_found": 112,
+          "precision": 1.0,
+          "recall": 0.1761006289308176
+        },
+        {
+          "fraction": 0.02,
+          "reviewed": 224,
+          "frauds_found": 224,
+          "precision": 1.0,
+          "recall": 0.3522012578616352
+        },
+        {
+          "fraction": 0.05,
+          "reviewed": 560,
+          "frauds_found": 381,
+          "precision": 0.6803571428571429,
+          "recall": 0.5990566037735849
+        }
+      ],
+      "per_step": {
+        "40": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 7,
+              "precision": 1.0,
+              "recall": 0.0625
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 13,
+              "frauds_found": 13,
+              "precision": 1.0,
+              "recall": 0.11607142857142858
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.22321428571428573
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 61,
+              "frauds_found": 59,
+              "precision": 0.9672131147540983,
+              "recall": 0.5267857142857143
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.044642857142857144
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.08928571428571429
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.22321428571428573
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.44642857142857145
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 75,
+            "frauds_found": 65,
+            "precision": 0.8666666666666667,
+            "recall": 0.5803571428571429
+          }
+        },
+        "41": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 6,
+              "frauds_found": 6,
+              "precision": 1.0,
+              "recall": 0.05172413793103448
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 12,
+              "frauds_found": 12,
+              "precision": 1.0,
+              "recall": 0.10344827586206896
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 23,
+              "frauds_found": 23,
+              "precision": 1.0,
+              "recall": 0.19827586206896552
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 57,
+              "frauds_found": 57,
+              "precision": 1.0,
+              "recall": 0.49137931034482757
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.04310344827586207
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.08620689655172414
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.21551724137931033
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.43103448275862066
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 109,
+            "frauds_found": 104,
+            "precision": 0.9541284403669725,
+            "recall": 0.896551724137931
+          }
+        },
+        "42": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 11,
+              "frauds_found": 11,
+              "precision": 1.0,
+              "recall": 0.04602510460251046
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 22,
+              "frauds_found": 22,
+              "precision": 1.0,
+              "recall": 0.09205020920502092
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 44,
+              "frauds_found": 44,
+              "precision": 1.0,
+              "recall": 0.18410041841004185
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 108,
+              "frauds_found": 108,
+              "precision": 1.0,
+              "recall": 0.45188284518828453
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 5,
+              "precision": 1.0,
+              "recall": 0.02092050209205021
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 10,
+              "precision": 1.0,
+              "recall": 0.04184100418410042
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 25,
+              "precision": 1.0,
+              "recall": 0.10460251046025104
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 50,
+              "precision": 1.0,
+              "recall": 0.20920502092050208
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 193,
+            "frauds_found": 182,
+            "precision": 0.9430051813471503,
+            "recall": 0.7615062761506276
+          }
+        },
+        "43": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 14,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 28,
+              "frauds_found": 3,
+              "precision": 0.10714285714285714,
+              "recall": 0.125
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 69,
+              "frauds_found": 5,
+              "precision": 0.07246376811594203,
+              "recall": 0.20833333333333334
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 3,
+              "precision": 0.12,
+              "recall": 0.125
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 5,
+              "precision": 0.1,
+              "recall": 0.20833333333333334
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 4,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "44": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 8,
+              "frauds_found": 1,
+              "precision": 0.125,
+              "recall": 0.041666666666666664
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 16,
+              "frauds_found": 1,
+              "precision": 0.0625,
+              "recall": 0.041666666666666664
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 32,
+              "frauds_found": 1,
+              "precision": 0.03125,
+              "recall": 0.041666666666666664
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 80,
+              "frauds_found": 2,
+              "precision": 0.025,
+              "recall": 0.08333333333333333
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 1,
+              "precision": 0.2,
+              "recall": 0.041666666666666664
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.041666666666666664
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 1,
+              "precision": 0.04,
+              "recall": 0.041666666666666664
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 1,
+              "precision": 0.02,
+              "recall": 0.041666666666666664
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 10,
+            "frauds_found": 1,
+            "precision": 0.1,
+            "recall": 0.041666666666666664
+          }
+        },
+        "45": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 7,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 13,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 62,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 5,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "46": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 4,
+              "frauds_found": 1,
+              "precision": 0.25,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 8,
+              "frauds_found": 1,
+              "precision": 0.125,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 15,
+              "frauds_found": 1,
+              "precision": 0.06666666666666667,
+              "recall": 0.5
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 36,
+              "frauds_found": 1,
+              "precision": 0.027777777777777776,
+              "recall": 0.5
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 1,
+              "precision": 0.2,
+              "recall": 0.5
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.5
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 1,
+              "precision": 0.04,
+              "recall": 0.5
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 1,
+              "precision": 0.02,
+              "recall": 0.5
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 7,
+            "frauds_found": 1,
+            "precision": 0.14285714285714285,
+            "recall": 0.5
+          }
+        },
+        "47": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 9,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 17,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 43,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 6,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "48": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 3,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.027777777777777776
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 24,
+              "frauds_found": 3,
+              "precision": 0.125,
+              "recall": 0.08333333333333333
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.027777777777777776
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 3,
+              "precision": 0.12,
+              "recall": 0.08333333333333333
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 7,
+              "precision": 0.14,
+              "recall": 0.19444444444444445
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 1,
+            "frauds_found": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        },
+        "49": {
+          "fractions": [
+            {
+              "fraction": 0.005,
+              "reviewed": 3,
+              "frauds_found": 1,
+              "precision": 0.3333333333333333,
+              "recall": 0.017857142857142856
+            },
+            {
+              "fraction": 0.01,
+              "reviewed": 5,
+              "frauds_found": 1,
+              "precision": 0.2,
+              "recall": 0.017857142857142856
+            },
+            {
+              "fraction": 0.02,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.017857142857142856
+            },
+            {
+              "fraction": 0.05,
+              "reviewed": 24,
+              "frauds_found": 3,
+              "precision": 0.125,
+              "recall": 0.05357142857142857
+            }
+          ],
+          "capacities": [
+            {
+              "capacity": 5,
+              "reviewed": 5,
+              "frauds_found": 1,
+              "precision": 0.2,
+              "recall": 0.017857142857142856
+            },
+            {
+              "capacity": 10,
+              "reviewed": 10,
+              "frauds_found": 1,
+              "precision": 0.1,
+              "recall": 0.017857142857142856
+            },
+            {
+              "capacity": 25,
+              "reviewed": 25,
+              "frauds_found": 3,
+              "precision": 0.12,
+              "recall": 0.05357142857142857
+            },
+            {
+              "capacity": 50,
+              "reviewed": 50,
+              "frauds_found": 6,
+              "precision": 0.12,
+              "recall": 0.10714285714285714
+            }
+          ],
+          "frozen_threshold": {
+            "threshold": 0.6109791002972955,
+            "reviewed": 7,
+            "frauds_found": 1,
+            "precision": 0.14285714285714285,
+            "recall": 0.017857142857142856
+          }
+        }
+      },
+      "summed_per_step": {
+        "fractions": [
+          {
+            "fraction": 0.005,
+            "reviewed": 61,
+            "frauds_found": 27,
+            "precision": 0.4426229508196721,
+            "recall": 0.04245283018867924
+          },
+          {
+            "fraction": 0.01,
+            "reviewed": 117,
+            "frauds_found": 50,
+            "precision": 0.42735042735042733,
+            "recall": 0.07861635220125786
+          },
+          {
+            "fraction": 0.02,
+            "reviewed": 229,
+            "frauds_found": 99,
+            "precision": 0.43231441048034935,
+            "recall": 0.15566037735849056
+          },
+          {
+            "fraction": 0.05,
+            "reviewed": 564,
+            "frauds_found": 238,
+            "precision": 0.4219858156028369,
+            "recall": 0.3742138364779874
+          }
+        ],
+        "capacities": [
+          {
+            "capacity": 5,
+            "reviewed": 50,
+            "frauds_found": 18,
+            "precision": 0.36,
+            "recall": 0.02830188679245283
+          },
+          {
+            "capacity": 10,
+            "reviewed": 100,
+            "frauds_found": 34,
+            "precision": 0.34,
+            "recall": 0.05345911949685535
+          },
+          {
+            "capacity": 25,
+            "reviewed": 250,
+            "frauds_found": 86,
+            "precision": 0.344,
+            "recall": 0.13522012578616352
+          },
+          {
+            "capacity": 50,
+            "reviewed": 500,
+            "frauds_found": 170,
+            "precision": 0.34,
+            "recall": 0.2672955974842767
+          }
+        ],
+        "frozen_threshold": {
+          "threshold": 0.6109791002972955,
+          "reviewed": 417,
+          "frauds_found": 354,
+          "precision": 0.8489208633093526,
+          "recall": 0.5566037735849056
+        }
+      }
+    }
+  },
   "versions": {
     "python": "3.12.16",
     "numpy": "2.3.5",
@@ -1085,8 +3877,371 @@
     "Unknown labels are excluded from metrics; review budget applies only to the labelled cohort.",
     "Local features are anonymous and their real-time availability cannot be verified.",
     "The 72 upstream aggregate features and current time step are excluded from model inputs.",
-    "One historical split and unobserved label delay limit conclusions.",
-    "No financial impact or deployment claim is made; scores are not calibrated probabilities."
+    "One previously inspected final test period and unobserved label delay limit conclusions.",
+    "No financial impact or deployment claim is made; scores are not calibrated probabilities.",
+    "Historical windows are offline diagnostics assuming labels are available by each fit and validation; they do not establish causality or superiority."
+  ],
+  "historical_windows": [
+    {
+      "splits": {
+        "train": {
+          "rows": 86471,
+          "labelled": 17989,
+          "unknown": 68482,
+          "illicit": 1511,
+          "licit": 16478,
+          "time_min": 1,
+          "time_max": 19
+        },
+        "validation": {
+          "rows": 22479,
+          "labelled": 5617,
+          "unknown": 16862,
+          "illicit": 708,
+          "licit": 4909,
+          "time_min": 20,
+          "time_max": 24
+        },
+        "evaluation": {
+          "rows": 11854,
+          "labelled": 2775,
+          "unknown": 9079,
+          "illicit": 652,
+          "licit": 2123,
+          "time_min": 25,
+          "time_max": 29
+        }
+      },
+      "validation_metrics": {
+        "local": {
+          "average_precision": 0.8733362739013605,
+          "roc_auc": 0.9435126074211669,
+          "threshold": 0.08246007893928556,
+          "precision_at_frozen_threshold": 0.912106135986733,
+          "recall_at_frozen_threshold": 0.7768361581920904,
+          "review_fraction_at_frozen_threshold": 0.10735267936620972,
+          "review_budget": {
+            "reviewed": 57,
+            "frauds_found": 57,
+            "precision": 1.0,
+            "recall": 0.08050847457627118
+          }
+        },
+        "structure": {
+          "average_precision": 0.8738639868875636,
+          "roc_auc": 0.9445066883954641,
+          "threshold": 0.11054101832643368,
+          "precision_at_frozen_threshold": 0.927710843373494,
+          "recall_at_frozen_threshold": 0.7612994350282486,
+          "review_fraction_at_frozen_threshold": 0.10343599786362827,
+          "review_budget": {
+            "reviewed": 57,
+            "frauds_found": 57,
+            "precision": 1.0,
+            "recall": 0.08050847457627118
+          }
+        },
+        "neighborhood": {
+          "average_precision": 0.8718334874064623,
+          "roc_auc": 0.9398867294361907,
+          "threshold": 0.10058069908378921,
+          "precision_at_frozen_threshold": 0.9488536155202821,
+          "recall_at_frozen_threshold": 0.7598870056497176,
+          "review_fraction_at_frozen_threshold": 0.10094356418016735,
+          "review_budget": {
+            "reviewed": 57,
+            "frauds_found": 57,
+            "precision": 1.0,
+            "recall": 0.08050847457627118
+          }
+        }
+      },
+      "evaluation_metrics": {
+        "local": {
+          "average_precision": 0.7798996609945392,
+          "roc_auc": 0.8358324977098619,
+          "threshold": 0.08246007893928556,
+          "precision_at_frozen_threshold": 0.9122807017543859,
+          "recall_at_frozen_threshold": 0.6380368098159509,
+          "review_fraction_at_frozen_threshold": 0.1643243243243243,
+          "review_budget": {
+            "reviewed": 28,
+            "frauds_found": 28,
+            "precision": 1.0,
+            "recall": 0.04294478527607362
+          }
+        },
+        "structure": {
+          "average_precision": 0.7859849557541764,
+          "roc_auc": 0.8475345977014815,
+          "threshold": 0.11054101832643368,
+          "precision_at_frozen_threshold": 0.9220489977728286,
+          "recall_at_frozen_threshold": 0.6349693251533742,
+          "review_fraction_at_frozen_threshold": 0.16180180180180181,
+          "review_budget": {
+            "reviewed": 28,
+            "frauds_found": 28,
+            "precision": 1.0,
+            "recall": 0.04294478527607362
+          }
+        },
+        "neighborhood": {
+          "average_precision": 0.7815464320284575,
+          "roc_auc": 0.8395277836375772,
+          "threshold": 0.10058069908378921,
+          "precision_at_frozen_threshold": 0.9174107142857143,
+          "recall_at_frozen_threshold": 0.6303680981595092,
+          "review_fraction_at_frozen_threshold": 0.16144144144144143,
+          "review_budget": {
+            "reviewed": 28,
+            "frauds_found": 28,
+            "precision": 1.0,
+            "recall": 0.04294478527607362
+          }
+        }
+      },
+      "selected_variant": "structure"
+    },
+    {
+      "splits": {
+        "train": {
+          "rows": 108950,
+          "labelled": 23606,
+          "unknown": 85344,
+          "illicit": 2219,
+          "licit": 21387,
+          "time_min": 1,
+          "time_max": 24
+        },
+        "validation": {
+          "rows": 11854,
+          "labelled": 2775,
+          "unknown": 9079,
+          "illicit": 652,
+          "licit": 2123,
+          "time_min": 25,
+          "time_max": 29
+        },
+        "evaluation": {
+          "rows": 15461,
+          "labelled": 3513,
+          "unknown": 11948,
+          "illicit": 591,
+          "licit": 2922,
+          "time_min": 30,
+          "time_max": 34
+        }
+      },
+      "validation_metrics": {
+        "local": {
+          "average_precision": 0.9898281858711125,
+          "roc_auc": 0.9961530014535515,
+          "threshold": 0.2554965422027104,
+          "precision_at_frozen_threshold": 0.9654088050314465,
+          "recall_at_frozen_threshold": 0.941717791411043,
+          "review_fraction_at_frozen_threshold": 0.22918918918918918,
+          "review_budget": {
+            "reviewed": 28,
+            "frauds_found": 28,
+            "precision": 1.0,
+            "recall": 0.04294478527607362
+          }
+        },
+        "structure": {
+          "average_precision": 0.9917946766989487,
+          "roc_auc": 0.996941907070964,
+          "threshold": 0.2328662490655812,
+          "precision_at_frozen_threshold": 0.9625,
+          "recall_at_frozen_threshold": 0.9447852760736196,
+          "review_fraction_at_frozen_threshold": 0.23063063063063063,
+          "review_budget": {
+            "reviewed": 28,
+            "frauds_found": 28,
+            "precision": 1.0,
+            "recall": 0.04294478527607362
+          }
+        },
+        "neighborhood": {
+          "average_precision": 0.9928328308542821,
+          "roc_auc": 0.9971571945013568,
+          "threshold": 0.29269220768815735,
+          "precision_at_frozen_threshold": 0.9730586370839936,
+          "recall_at_frozen_threshold": 0.941717791411043,
+          "review_fraction_at_frozen_threshold": 0.2273873873873874,
+          "review_budget": {
+            "reviewed": 28,
+            "frauds_found": 28,
+            "precision": 1.0,
+            "recall": 0.04294478527607362
+          }
+        }
+      },
+      "evaluation_metrics": {
+        "local": {
+          "average_precision": 0.9668886898619523,
+          "roc_auc": 0.9911535223191588,
+          "threshold": 0.2554965422027104,
+          "precision_at_frozen_threshold": 0.9228070175438596,
+          "recall_at_frozen_threshold": 0.8900169204737732,
+          "review_fraction_at_frozen_threshold": 0.16225448334756618,
+          "review_budget": {
+            "reviewed": 36,
+            "frauds_found": 36,
+            "precision": 1.0,
+            "recall": 0.06091370558375635
+          }
+        },
+        "structure": {
+          "average_precision": 0.9709344556545659,
+          "roc_auc": 0.9923730472256098,
+          "threshold": 0.2328662490655812,
+          "precision_at_frozen_threshold": 0.9100169779286927,
+          "recall_at_frozen_threshold": 0.9069373942470389,
+          "review_fraction_at_frozen_threshold": 0.16766296612581838,
+          "review_budget": {
+            "reviewed": 36,
+            "frauds_found": 36,
+            "precision": 1.0,
+            "recall": 0.06091370558375635
+          }
+        },
+        "neighborhood": {
+          "average_precision": 0.98436515301887,
+          "roc_auc": 0.9963477950688573,
+          "threshold": 0.29269220768815735,
+          "precision_at_frozen_threshold": 0.9446366782006921,
+          "recall_at_frozen_threshold": 0.9238578680203046,
+          "review_fraction_at_frozen_threshold": 0.1645317392541987,
+          "review_budget": {
+            "reviewed": 36,
+            "frauds_found": 36,
+            "precision": 1.0,
+            "recall": 0.06091370558375635
+          }
+        }
+      },
+      "selected_variant": "neighborhood"
+    },
+    {
+      "splits": {
+        "train": {
+          "rows": 120804,
+          "labelled": 26381,
+          "unknown": 94423,
+          "illicit": 2871,
+          "licit": 23510,
+          "time_min": 1,
+          "time_max": 29
+        },
+        "validation": {
+          "rows": 15461,
+          "labelled": 3513,
+          "unknown": 11948,
+          "illicit": 591,
+          "licit": 2922,
+          "time_min": 30,
+          "time_max": 34
+        },
+        "evaluation": {
+          "rows": 20857,
+          "labelled": 5486,
+          "unknown": 15371,
+          "illicit": 447,
+          "licit": 5039,
+          "time_min": 35,
+          "time_max": 39
+        }
+      },
+      "validation_metrics": {
+        "local": {
+          "average_precision": 0.9854035007585151,
+          "roc_auc": 0.996231401666105,
+          "threshold": 0.41557079093893434,
+          "precision_at_frozen_threshold": 0.9554030874785592,
+          "recall_at_frozen_threshold": 0.9424703891708968,
+          "review_fraction_at_frozen_threshold": 0.16595502419584401,
+          "review_budget": {
+            "reviewed": 36,
+            "frauds_found": 36,
+            "precision": 1.0,
+            "recall": 0.06091370558375635
+          }
+        },
+        "structure": {
+          "average_precision": 0.9855218751765423,
+          "roc_auc": 0.9962736738969554,
+          "threshold": 0.40904644362466774,
+          "precision_at_frozen_threshold": 0.9504273504273504,
+          "recall_at_frozen_threshold": 0.9407783417935702,
+          "review_fraction_at_frozen_threshold": 0.16652433817250215,
+          "review_budget": {
+            "reviewed": 36,
+            "frauds_found": 36,
+            "precision": 1.0,
+            "recall": 0.06091370558375635
+          }
+        },
+        "neighborhood": {
+          "average_precision": 0.9907366292463882,
+          "roc_auc": 0.9977242483939448,
+          "threshold": 0.350622780810393,
+          "precision_at_frozen_threshold": 0.9641025641025641,
+          "recall_at_frozen_threshold": 0.9543147208121827,
+          "review_fraction_at_frozen_threshold": 0.16652433817250215,
+          "review_budget": {
+            "reviewed": 36,
+            "frauds_found": 36,
+            "precision": 1.0,
+            "recall": 0.06091370558375635
+          }
+        }
+      },
+      "evaluation_metrics": {
+        "local": {
+          "average_precision": 0.9356731191349335,
+          "roc_auc": 0.9837988521745152,
+          "threshold": 0.41557079093893434,
+          "precision_at_frozen_threshold": 0.8531317494600432,
+          "recall_at_frozen_threshold": 0.883668903803132,
+          "review_fraction_at_frozen_threshold": 0.08439664600802041,
+          "review_budget": {
+            "reviewed": 55,
+            "frauds_found": 55,
+            "precision": 1.0,
+            "recall": 0.12304250559284116
+          }
+        },
+        "structure": {
+          "average_precision": 0.9367710128700479,
+          "roc_auc": 0.9837819815284183,
+          "threshold": 0.40904644362466774,
+          "precision_at_frozen_threshold": 0.8624454148471615,
+          "recall_at_frozen_threshold": 0.883668903803132,
+          "review_fraction_at_frozen_threshold": 0.08348523514400291,
+          "review_budget": {
+            "reviewed": 55,
+            "frauds_found": 55,
+            "precision": 1.0,
+            "recall": 0.12304250559284116
+          }
+        },
+        "neighborhood": {
+          "average_precision": 0.9499395297033326,
+          "roc_auc": 0.9871507831753485,
+          "threshold": 0.350622780810393,
+          "precision_at_frozen_threshold": 0.871244635193133,
+          "recall_at_frozen_threshold": 0.9082774049217002,
+          "review_fraction_at_frozen_threshold": 0.08494349252643091,
+          "review_budget": {
+            "reviewed": 55,
+            "frauds_found": 55,
+            "precision": 1.0,
+            "recall": 0.12304250559284116
+          }
+        }
+      },
+      "selected_variant": "neighborhood"
+    }
   ],
   "input_sha256": {
     "elliptic_txs_features.csv": "fd7f83573443c9e302e371d3f110e3b6224160f5d1ed8a287757936127800ff0",
@@ -1094,8 +4249,10 @@
     "elliptic_txs_edgelist.csv": "a35053ba68a98e4382cae2ba65b9d9e36b23b6439e02dff084971b1b72a5156e"
   },
   "source_sha256": {
-    "scripts/benchmark_elliptic.py": "5a4553029ec4eb09884ee06dedaf906ca68a90e03c2782a1451cd39e4dc9357b",
+    "scripts/benchmark_elliptic.py": "108d309f5ad9888dd70fa6cb33943da960d0f644e0c598780b342025941edac3",
     "scripts/benchmark.py": "6b4f174ef0e7246b503307efc457665d85c56abbad56dbd4ac021cd98bb57922",
+    "scripts/plot_elliptic.py": "656b146459677806fe871b55c9a5c7e0865abf8b1ce05e87bec16c4eeac45ffb",
+    "requirements-benchmark.txt": "243948bf8a6e39b2e27b9348416d9595ffbd81ee576749436460e11b402adb08",
     "scripts/download_elliptic.py": "d6fcfb10ed03793739427b3560e1bdff95f2269f12def0ae584a844bf858c17c",
     "scripts/download_creditcard.py": "2887b0b7c0b91ad9715caabf33ec484391451ba9eae06466647cf8968a354af0",
     "fraudguard/elliptic.py": "ae8b397cdf22994ff52a05cf0340fd6f899bcd5b19bf2ce7b6bdef8b8340f802",
