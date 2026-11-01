@@ -11,6 +11,7 @@
   <a href="#reproduce-the-ulb-experiment">Reproduce</a> &nbsp;·&nbsp;
   <a href="#elliptic-graph-experiment">Elliptic</a> &nbsp;·&nbsp;
   <a href="#temporal-stability-and-review-policies">Diagnostics</a> &nbsp;·&nbsp;
+  <a href="#transaction-replay-with-delayed-labels">Transaction replay</a> &nbsp;·&nbsp;
   <a href="#existing-application">Local app</a> &nbsp;·&nbsp;
   <a href="#evidence-and-limits">Limits</a>
 </p>
@@ -25,6 +26,8 @@ separates model selection, threshold selection and final evaluation.
 
 An additional Elliptic AML experiment compares local transaction attributes,
 graph structure and neighbouring features on future completed graph snapshots.
+The synthetic transaction replay adds event-time history, delayed feedback and
+weekly retraining, with a separate daily review queue.
 
 ## Measured result
 
@@ -68,6 +71,7 @@ only evaluates that frozen choice.
 | --- | --- | --- |
 | Chronological ULB experiment | [`scripts/benchmark.py`](scripts/benchmark.py) | Versioned JSON report with provenance and review-budget metrics |
 | Elliptic graph comparison | [`scripts/benchmark_elliptic.py`](scripts/benchmark_elliptic.py) | Three fixed feature variants on future snapshots, with a shared review budget |
+| Synthetic transaction replay | [`scripts/replay_handbook.py`](scripts/replay_handbook.py) | Point-in-time history, simulated label delays and daily review metrics |
 | Generic transaction application | [`scripts/train.py`](scripts/train.py) → [`app/app.py`](app/app.py) | App-compatible model and interactive predictions |
 
 ## Benchmark protocol
@@ -261,6 +265,92 @@ Because unknown labels are excluded, review metrics do not estimate performance
 on the entire operational transaction stream. One historical split does not
 establish general superiority, calibrated probabilities or financial impact.
 The existing Streamlit form uses its separate generic-transaction schema.
+
+## Transaction replay with delayed labels
+
+**Question:** how much does entity history help when fraud labels arrive late?
+This experiment uses synthetic transactions from the
+[Fraud Detection Handbook](https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_3_GettingStarted/SimulatedDataset.html),
+which supplies customer/terminal IDs and timestamps at second-level granularity.
+Label-confirmation times are not observed: a uniform delay is simulated for
+**both fraud and legitimate transactions**.
+
+### Replay protocol
+
+- Load **1 April–15 July 2018**: 1,016,507 transactions / 8,138 frauds. This is
+  a 106-day subset of the official dataset, not its full six-month history.
+- Evaluate the same **18 June–15 July** transactions in all four comparisons.
+  Refit every seven days on the latest 28 days of events whose labels have
+  matured: `[fit_time − delay − 28 days, fit_time − delay)`.
+- A label is usable only when `event_time + delay < scoring_or_fit_time`.
+  Compare **0 days** (optimistic immediate feedback after the timestamp group)
+  with **7 days**. All events at the scoring timestamp are excluded from history.
+- Build each training row's features as known at its **original event time**;
+  never enrich old rows retroactively with labels available at the later fit.
+  Require daily source coverage for the training window, 30-day history and
+  both delay intervals before evaluation. Missing required dates are rejected.
+- Use the same fixed `HistGradientBoostingClassifier` parameters for every run:
+  100 iterations, 31 leaves, learning rate 0.1, L2 1, no early stopping, seed 42.
+  No tuning or model selection uses this evaluation period.
+
+| Variant | Features available when the transaction arrives |
+| --- | --- |
+| Basic (3) | Amount, hour, day of week |
+| History (18) | Basic + customer count/mean amount, terminal count, revealed-label count/fraud rate, each over 1/7/30 days |
+
+Activity windows cover `[t − window, t)`. Feedback windows use **label reveal
+time**, so their source events lie in `[t − delay − window, t − delay)`.
+IDs are grouping keys; neither raw IDs nor `TX_FRAUD_SCENARIO` enters the model.
+An empty window has zero count/mean/rate, with the count distinguishing absent
+feedback from observed zero fraud.
+
+The implementation computes past-only features in batches and scores each week
+with its frozen model. This is a historical replay, not a deployed stream.
+**At the end of each day**, rank that day's scores and review the top 1%, rounding
+capacity up. Ties use event time then transaction ID. This queue requires a
+completed day and does not simulate instant payment blocking. Reviews do not
+accelerate labels or alter later transactions; outcomes are evaluated after
+labels mature.
+
+### Measured comparison
+
+The common evaluation cohort has **268,441 transactions / 2,439 frauds** across
+28 days. Each variant reviews **2,698 transactions** in total.
+
+| Label delay | Features | Mean daily AP | Precision @ daily 1% | Recall @ daily 1% | Frauds found |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 0 days | Basic | 0.1443 | 0.2191 | 0.2423 | 591 |
+| 0 days | History | 0.9027 | 0.7817 | 0.8647 | 2,109 |
+| 7 days | Basic | 0.1390 | 0.2179 | 0.2411 | 588 |
+| 7 days | History | 0.7261 | 0.6420 | 0.7101 | 1,732 |
+
+At seven-day delay, history finds **1,144 more frauds at the same review count**
+than basic features. With history, delaying labels reduces observed recall from
+86.47% to 71.01%. Delay changes both training recency and feedback features;
+this comparison does not isolate their individual effects. These results belong
+to one synthetic realization and period, not to real-world fraud or financial
+impact. They do not establish statistical superiority.
+
+AP is an unweighted mean of 28 daily AP values, not pooled AP. Review precision
+and recall divide summed counts. Single-class daily AP/ROC and recall without
+frauds are undefined. [Full daily results, refit windows and provenance](reports/handbook-replay.json).
+
+### Reproduce the replay
+
+With the pinned Python 3.12 benchmark environment above activated:
+
+```bash
+python -m scripts.download_handbook
+OMP_NUM_THREADS=4 python -m scripts.replay_handbook \
+  --data data/raw/handbook/transactions.csv \
+  --output reports/handbook-replay.json
+```
+
+The downloader uses the [official raw-data repository at a pinned commit](https://github.com/Fraud-Detection-Handbook/simulated-data-raw/tree/6e67dbd0a3bfe0d7ec33abc4bce5f37cd4ff0d6a).
+It verifies the entire archive's SHA-256 **before reading its pickle files**,
+then verifies the converted subset CSV. Raw data stays outside Git. The measured
+report records input/source hashes, software versions, features and exact fit
+boundaries. Dataset terms remain separate from this repository's code license.
 
 ## Existing application
 
